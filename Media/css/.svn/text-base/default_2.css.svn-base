@@ -1,0 +1,90 @@
+.button_my_games {
+    font: bold 13px ruby;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.cell{
+    text-align:center;
+}
+
+.table_x{
+
+    margin:0 auto;
+}
+
+.right_t{
+    text-align: right;
+}
+
+.login_arr{
+    text-align: center;
+    width: 350px;
+    border-width: 3px;
+    border-color: darkgrey;
+    background-color: lightgray;
+    margin: 0 auto;
+}
+
+.button_x{
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: lightgray;
+    cursor: pointer;
+    text-align: center;
+}
+
+.text_box_x{
+    background-color: transparent;
+    border-color: black;
+    border-width: 2px;
+}
+.text_box_x:focus{
+    background-color: white;
+}
+
+body{
+    /*background-image:radial-gradient(white, green, darkgreen, white, darkgreen, white, darkgreen, green, white);*/
+    background-image: url("../img/background.jpg");
+    background-repeat: repeat-y;
+    background-size: 100%;
+    width: 97%;
+    height: auto;
+}
+
+.cell_x{
+    background-color: lightgray;
+}
+
+p.wrong
+{
+    color: red;
+    font-weight: bold;
+    background-color: aquamarine;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.ata{
+    background-color:rgba(255, 255, 255, 0.7);
+    border-radius: 80px;
+    border-color: black;
+    font-weight: bold;
+    width: 1250px;
+    height: 320;
+}
+
+.mail_disp{
+    background-color:rgba(255, 255, 255, 0.7);
+    border-radius: 80px;
+    font-weight: bold;
+    margin: 0 auto;
+    width: 390px;
+    height: auto;
+}

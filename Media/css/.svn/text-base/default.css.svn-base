@@ -1,0 +1,195 @@
+.head{
+    text-align: center;
+}
+span.head{
+    display: block;
+    text-align: end;
+}
+a.head{
+    border-style: double;
+    font-size: x-large;
+    color: black;
+    font-weight: bold;
+    background-color: darkgray;
+
+}
+.meniu{
+    margin-top: 50;
+    margin-bottom: 50;
+    border-style: double;
+    background-color: lightgray;
+}
+a.meniu {
+    border-style: none;
+    font-size: large;
+    color: black;
+    font-weight: bold;
+}
+a.meniu_aux{
+    display: inherit;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+}
+a.bold{
+    background-color: darkgray;
+    border-style: outset;
+    border-color: lightgrey;
+}
+p.meniu {
+    height: 50;
+    border-style: none;
+    text-align: center;
+}
+img.last_game{
+    width: 120;
+    height: 100;
+    display: block;
+}
+form.add img.last_game{
+
+    margin: 0 auto;
+}
+p.last_game{
+    margin-left: 50;
+    margin-right: 50;
+    text-align: center;
+    display: inline-block;
+}
+div.last_game{
+    display: inline-block;
+    width: 100%;
+}
+
+td.last_game{
+    display: inline-block;
+}
+form.last_game{
+    display: inline-block;
+    text-align: center;
+
+
+}
+form.last_game input.last_game{
+    display: block;
+}
+form.last_game label.last_game{
+    display: inline-block;
+}
+p.categories a.meniu{
+    width: 100;
+    height: auto;
+}
+form.detali_game{
+    width: 210px;
+    margin: 0 auto;
+}
+img.detali_game{
+    width: 500;
+    height: 300;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+a.detali_game{
+    display: block;
+    text-align: center;
+    border: 4px outset;
+    padding: 2px;
+    text-decoration: none;
+    width: 70px;
+    margin: 0 auto;
+}
+div.detali_game{
+    display: block;
+    text-align: center;
+}
+div.detali_game form.last_game{
+    display: block;
+    text-align: center;
+}
+div.detali_game form.last_game input.last_game{
+    display: inline;
+}
+h2{
+  display: block;
+  text-align: center;
+
+}
+
+p.comment_area{
+    display: block;
+    text-align: center;
+}
+p#comments{
+    display: inline-block;
+    width: 502;
+}
+#bold #italic #underline{
+    display: inline-block;
+}
+h4{
+    display: block;
+    text-align: center;
+}
+
+div.add{
+    width: 70%;
+    margin: 0 auto;
+
+}
+label.add{
+    font-weight: bold;
+}
+
+textarea.add{
+    margin: 0 auto;
+    width: 300;
+    height: 400;
+    text-align: justify;
+}
+.add{
+    text-align: center;
+    display: block;
+}
+
+.seven{
+    text-align: left;
+    color:red;
+    font-weight:bold;
+}
+
+form.rate{
+    width: 100;
+    height: 30;
+
+    margin: 0 auto;
+    }
+div.hom_pg{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+}
+a.logo :active{
+    text-decoration: none;
+}
+a.logo:link{
+    text-decoration: none;
+}
+a.logo:hover{
+    text-decoration: none;
+}
+
+/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
+div.rating-cancel,div.star-rating{float:left;width:17px;height:15px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
+div.rating-cancel,div.rating-cancel a{background:url(../img/delete.gif) no-repeat 0 -16px}
+div.star-rating,div.star-rating a{background:url(../img/star.gif) no-repeat 0 0px}
+div.rating-cancel a,div.star-rating a{display:block;width:16px;height:100%;background-position:0 0px;border:0}
+div.star-rating-on a{background-position:0 -16px!important}
+div.star-rating-hover a{background-position:0 -32px}
+/* Read Only CSS */
+div.star-rating-readonly a{cursor:default !important}
+/* Partial Star CSS */
+div.star-rating{background:transparent!important;overflow:hidden!important}
+/* END jQuery.Rating Plugin CSS */
