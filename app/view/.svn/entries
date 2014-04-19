@@ -26,40 +26,6 @@ internship.tomi
 
 2bc96bae-d88c-4bbe-99a3-abf892e14c03
 
-rate.tpl.php
-file
-
-
-
-
-2014-04-18T08:26:33.000000Z
-4ac834c15f5583617117564ef82959ed
-2013-08-30T11:29:47.521302Z
-99
-internship.laurentiu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-517
-
 404_index.tpl.php
 file
 
@@ -94,16 +60,16 @@ internship
 
 252
 
-login_view.tpl.php
+about_authors.tpl.php
 file
 
 
 
-
+delete
 2014-04-18T08:26:33.000000Z
-304b0f8defab7623330a372eb6ba55f0
-2013-08-29T08:07:41.684754Z
-62
+dd1102cef51c98b9deda1f672bec4401
+2013-08-30T12:38:51.195738Z
+106
 internship.tomi
 
 
@@ -126,14 +92,116 @@ internship.tomi
 
 
 
-1020
+2980
+
+category_edit.tpl.php
+file
+
+
+
+delete
+2014-04-18T08:26:33.000000Z
+bf9975cf7d10dc63979b4fb1999c224d
+2013-08-27T08:30:45.553803Z
+40
+internship.tomi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+680
+
+comments_view.tpl.php
+file
+
+
+
+delete
+2014-04-18T08:26:33.000000Z
+3aa5c3d3658a30b6dacdaaa5467080a9
+2013-08-30T10:57:48.521058Z
+95
+internship.tomi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1647
+
+game_add.tpl.php
+file
+
+
+
+delete
+2014-04-18T08:26:33.000000Z
+1654a2d3cd89a09fd4360f7bb7606925
+2013-08-30T08:30:54.812146Z
+87
+internship.laurentiu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2941
 
 game_view.tpl.php
 file
 
 
 
-
+delete
 2014-04-18T08:26:33.000000Z
 f655c3cbbc30d4f045da9b91925808f9
 2013-08-30T13:07:15.331689Z
@@ -161,74 +229,6 @@ internship.tomi
 
 
 3118
-
-user_view.tpl.php
-file
-
-
-
-
-2014-04-18T08:26:33.000000Z
-acef30bee107b24c2c4e2ae4c9255ecb
-2013-08-30T12:36:28.267205Z
-105
-internship.tomi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2065
-
-user_editpass.tpl.php
-file
-
-
-
-
-2014-04-18T08:26:33.000000Z
-79aa6558ad5f63e037f6a66fb34b9c6b
-2013-08-29T10:11:28.086727Z
-74
-internship.tomi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-998
 
 home_index.tpl.php
 file
@@ -264,119 +264,14 @@ internship.laurentiu
 
 3811
 
-comments_view.tpl.php
+login_view.tpl.php
 file
 
 
 
-
+delete
 2014-04-18T08:26:33.000000Z
-3aa5c3d3658a30b6dacdaaa5467080a9
-2013-08-30T10:57:48.521058Z
-95
-internship.tomi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1647
-
-about_authors.tpl.php
-file
-
-
-
-
-2014-04-18T08:26:33.000000Z
-dd1102cef51c98b9deda1f672bec4401
-2013-08-30T12:38:51.195738Z
-106
-internship.tomi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2980
-
-game_add.tpl.php
-file
-
-
-
-
-2014-04-18T08:26:33.000000Z
-1654a2d3cd89a09fd4360f7bb7606925
-2013-08-30T08:30:54.812146Z
-87
-internship.laurentiu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2941
-
-snippets
-dir
-
-user_register.tpl.php
-file
-
-
-
-
-2014-04-18T08:26:33.000000Z
-6e604fe26cd545246c90931b21d2b650
+304b0f8defab7623330a372eb6ba55f0
 2013-08-29T08:07:41.684754Z
 62
 internship.tomi
@@ -401,19 +296,19 @@ internship.tomi
 
 
 
-1383
+1020
 
-category_edit.tpl.php
+rate.tpl.php
 file
 
 
 
-
+delete
 2014-04-18T08:26:33.000000Z
-bf9975cf7d10dc63979b4fb1999c224d
-2013-08-27T08:30:45.553803Z
-40
-internship.tomi
+4ac834c15f5583617117564ef82959ed
+2013-08-30T11:29:47.521302Z
+99
+internship.laurentiu
 
 
 
@@ -435,14 +330,17 @@ internship.tomi
 
 
 
-680
+517
+
+snippets
+dir
 
 user_edit.tpl.php
 file
 
 
 
-
+delete
 2014-04-18T08:26:33.000000Z
 16b907c2022ba0718ff401d43a1cf382
 2013-08-30T08:36:24.183899Z
@@ -471,12 +369,46 @@ internship.tomi
 
 1322
 
+user_editpass.tpl.php
+file
+
+
+
+delete
+2014-04-18T08:26:33.000000Z
+79aa6558ad5f63e037f6a66fb34b9c6b
+2013-08-29T10:11:28.086727Z
+74
+internship.tomi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+998
+
 user_manage.tpl.php
 file
 
 
 
-
+delete
 2014-04-18T08:26:33.000000Z
 54de51c3241f9961da39faa192bc89f4
 2013-08-30T11:49:36.993160Z
@@ -504,4 +436,72 @@ internship.tomi
 
 
 2509
+
+user_register.tpl.php
+file
+
+
+
+delete
+2014-04-18T08:26:33.000000Z
+6e604fe26cd545246c90931b21d2b650
+2013-08-29T08:07:41.684754Z
+62
+internship.tomi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1383
+
+user_view.tpl.php
+file
+
+
+
+delete
+2014-04-18T08:26:33.000000Z
+acef30bee107b24c2c4e2ae4c9255ecb
+2013-08-30T12:36:28.267205Z
+105
+internship.tomi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2065
 
