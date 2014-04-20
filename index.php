@@ -10,6 +10,10 @@ require_once APP_PATH . 'config/config.php';
 
 define('APP_URL', $config['domain'] . $config['folder']);
 
+
+// define constant
+define('DEFAULT_PAGER',10);
+
 // Setup auto-loader
 spl_autoload_register("auto_loader");
 function auto_loader($class) {
