@@ -1,6 +1,3 @@
-<html>
-<body>
-
 <footer>
   <p>© 2014</p>
 </footer>
