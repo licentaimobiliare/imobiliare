@@ -17,6 +17,6 @@ class controller_home {
 
 
 	function action_exemplu ($params){
-		@include_once APP_PATH . 'view/exemplu_index.tpl.php';
+		@include_once APP_PATH . 'view/asdf.tpl.php';
 }
 }
