@@ -3,7 +3,7 @@
 <title></title>
   <header>
     <div>
-      <h1><a href="index.php"><img src="media/images/logo.jpg" alt=""></a></h1>
+      <h1><a href="index.php"><img src="<?php echo APP_URL?>/media/images/logo.jpg" alt=""></a></h1>
       <div class="social-icons">
 			
 			<?php
@@ -44,7 +44,7 @@
       <div id="slide">
         <div class="slider">
           <ul class="items">
-            <li><img src="media/images/slider-1.jpg" alt=""></li>
+            <li><img src="<?php echo APP_URL;?>/media/images/slider-1.jpg" alt=""></li>
             <li><img src="media/images/slider-2.jpg" alt=""></li>
             <li><img src="media/images/slider-3.jpg" alt=""></li>
           </ul>

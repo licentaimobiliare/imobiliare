@@ -40,15 +40,15 @@ $controller = $config['default_controller'];
 $action = $config['default_action'];
 
 // First argument in the URL, if exists, defines the controller
-if (count($tokens) >= 1) {
-	$controller = $tokens[0];
-	$tokens = (count($tokens) > 1) ? array_slice($tokens, 1) : array();
+if (count($tokens) >= 2) {
+	$controller = $tokens[1];
+	$tokens = (count($tokens) > 2) ? array_slice($tokens, 2) : array();
 }
 
 // Second argument in the URL, if exists, defines the action
-if (count($tokens) >= 1) {
-	$action = $tokens[0];
-	$tokens = (count($tokens) > 1) ? array_slice($tokens, 1) : array();
+if (count($tokens) >= 2) {
+	$action = $tokens[1];
+	$tokens = (count($tokens) > 2) ? array_slice($tokens, 2) : array();
 }
 
 // Compiles controller class name
