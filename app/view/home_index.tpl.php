@@ -1,49 +1,7 @@
 <?php @include APP_PATH . 'view/snippets/header.tpl.php'; ?>
 
 <body>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" media="screen" href="media/css/reset.css">
-<link rel="stylesheet" type="text/css" media="screen" href="media/css/style.css">
-<link rel="stylesheet" type="text/css" media="screen" href="media/css/grid_12.css">
-<link rel="stylesheet" type="text/css" media="screen" href="media/css/slider.css">
-<link rel="stylesheet" type="text/css" media="screen" href="media/css/jqtransform.css">
-<script src="media/js/jquery-1.7.min.js"></script>
-<script src="media/js/jquery.easing.1.3.js"></script>
-<script src="media/js/cufon-yui.js"></script>
-<script src="media/js/vegur_400.font.js"></script>
-<script src="media/js/Vegur_bold_700.font.js"></script>
-<script src="media/js/cufon-replace.js"></script>
-<script src="media/js/tms-0.4.x.js"></script>
-<script src="media/js/jquery.jqtransform.js"></script>
-<script src="media/js/FF-cash.js"></script>
-<script>
-$(document)
-    .ready(function () {
-    $('.form-1')
-        .jqTransform();
-    $('.slider')
-        ._TMS({
-        show: 0,
-        pauseOnHover: true,
-        prevBu: '.prev',
-        nextBu: '.next',
-        playBu: false,
-        duration: 1000,
-        preset: 'fade',
-        pagination: true,
-        pagNums: false,
-        slideshow: 7000,
-        numStatus: false,
-        banners: false,
-        waitBannerAnimation: false,
-        progressBar: false
-    })
-});
-</script>
-<!--[if lt IE 9]>
-<script src="js/html5.js"></script>
-<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
-<![endif]-->
+
 <div class="main">
 <section id="content">
     <div class="container_12">
