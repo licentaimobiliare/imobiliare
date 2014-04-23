@@ -57,7 +57,7 @@
           <li><a href="harta.php">Harta</a></li>
           <li><a href="comerciale.php">Comerciale</a></li>
           <li><a href="login.php">Acces</a></li>
-          <li><a href="contact.php">Reclamatii</a></li>
+          <li><a href="reclamatii.php">Reclamatii</a></li>
         </ul>
       </nav>
     </div>
