@@ -1,7 +1,7 @@
 <?php
 
 $config['domain'] = 'http://imobile.com';
-$config['folder'] = NULL;
+$config['folder'] = '/index.php';
 
 $config['database']['host'] = '127.0.0.1';
 $config['database']['user'] = 'root';

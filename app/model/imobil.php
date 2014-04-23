@@ -33,6 +33,21 @@ class model_imobil{
             $camere= $stmt ->fetchAll(PDO::FETCH_ASSOC);
             
             foreach ($results as $r){
+                $stmt = $connection->prepare('select * from proprietari where cnp = ?');
+                $stmt->execute(array($results->idp));
+                $result = $stmt->fetch();
+                //mapez proprietaru
+                $results->proprietar = array(
+                    'nume' => $result['nume'],
+                    'strada' => $result['strada'],
+                    'nr' => $result['nr'],
+                    'bl' => $result['bl'],
+                    'ap' => $result['ap'],
+                    'sc' => $result['sc'],
+                    'et' => $result['et'],
+                    'oras' => $result['oras'],
+                    'judet' => $result['judet']
+                );
                 //mapez camerele
                 $r->camere = array();
                 foreach ($camere as $c)
@@ -106,6 +121,24 @@ class model_imobil{
                 'scara' => $result['scara'],
                 'etaj' => $result['etaj']
             );
+            
+            //selectez proprietaru
+            $stmt = $connection ->prepare('select * from proprietari where cnp = ?');
+            $stmt ->execute(array($results->idp));
+            $result=$stmt->fetch();
+            //mapez proprietaru
+            $results -> proprietar = array(
+                'nume' => $result['nume'],
+                'strada' => $result['strada'],
+                'nr' => $result['nr'],
+                'bl' => $result['bl'],
+                'ap' => $result['ap'],
+                'sc' => $result['sc'],
+                'et' => $result['et'],
+                'oras' => $result['oras'],
+                'judet' => $result['judet']
+            );
+            
 		}
         return $results;
 	}
