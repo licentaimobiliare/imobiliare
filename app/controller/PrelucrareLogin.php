@@ -45,7 +45,7 @@ class controller_PrelucrareLogin {
 	{
 		
 		echo '<font color="red">Numele de utilizator si parola sunt gresite!</font><br>';
-		print '<a href="login.php">Inapoi la pagina de logare!</a>';
+		print '<a href="/index.php/login/index">Inapoi la pagina de logare!</a>';
 	}
 	    // header ("location:/index.php");
 		@include_once APP_PATH . 'view/PrelucrareLogin_index.tpl.php';

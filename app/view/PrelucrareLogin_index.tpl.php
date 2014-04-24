@@ -3,5 +3,5 @@
 <div class="main">
 <td valign="top">
 
-   <?php  header ("location:/index.php");?>
+   <?php  @include_once APP_PATH . 'view/home_index.tpl.php';?>
    

@@ -12,7 +12,7 @@
      <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 	<tr>
 
-			<form name="form1" class="form-1 bot-2" method="post" action="/index.php/PrelucrareLogin/index"> <?phpecho "da";die;?>
+			<form name="form1" class="form-1 bot-2" method="post" action="/index.php/PrelucrareLogin/index"> 
 			<td>
 			<table width="100%" border="50" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 
