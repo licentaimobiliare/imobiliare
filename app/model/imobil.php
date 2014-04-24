@@ -175,7 +175,22 @@ class model_imobil{
             $stmt->execute($id);
             $camere= $stmt ->fetchAll(PDO::FETCH_ASSOC);
             
-            foreach ($results as $r){
+            foreach ($results as $r) {
+                $stmt = $connection->prepare('select * from proprietari where cnp = ?');
+                $stmt->execute(array($r->idi));
+                $result = $stmt->fetch();
+                //mapez proprietaru
+                $results->proprietar = array(
+                    'nume' => $result['nume'],
+                    'strada' => $result['strada'],
+                    'nr' => $result['nr'],
+                    'bl' => $result['bl'],
+                    'ap' => $result['ap'],
+                    'sc' => $result['sc'],
+                    'et' => $result['et'],
+                    'oras' => $result['oras'],
+                    'judet' => $result['judet']
+                );
                 //mapez camerele
                 $r->camere = array();
                 foreach ($camere as $c)
