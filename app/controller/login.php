@@ -9,5 +9,6 @@ class controller_login {
 		@include_once APP_PATH . 'view/login_index.tpl.php';
 	
 	}
+        
 
 }

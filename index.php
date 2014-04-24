@@ -1,6 +1,7 @@
 <?php
 // Session
 session_start();
+ //var_dump($_SESSION);
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // Main app path
 define('APP_PATH', dirname(realpath(__FILE__)) . '/app/');

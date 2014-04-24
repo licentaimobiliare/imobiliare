@@ -12,7 +12,7 @@
      <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 	<tr>
 
-			<form name="form1" class="form-1 bot-2" method="post" action="prelucrare_login.php">
+			<form name="form1" class="form-1 bot-2" method="post" action="PrelucrareLogin/index"> <?phpecho "da";die;?>
 			<td>
 			<table width="100%" border="50" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 
@@ -34,7 +34,7 @@
 	<h2 class="top-1 p3">Creare cont nou:</h2>
 	<table width="100%" align="left" border="3" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 	<td><br><br><br><br><br>
-		<form name="form2" class="form-1 bot-2" method="post" action="prelucrare_inregistrare.php">
+		<form name="form2" class="form-1 bot-2" method="post" action="/index.php/PrelucrareInregistrare/index">
 		
 		
 

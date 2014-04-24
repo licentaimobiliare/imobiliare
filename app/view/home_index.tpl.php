@@ -12,15 +12,15 @@
         <p class="line-2">Pentru a mari profitabilitatea afacerii trebuie luate in considerare aspecte legate de diversitatea ofertei fata de concurenta – tocmai de aceea, firmele de dimensiuni relative mici au inceput sa ofere produse integrate (de la tranzactia imobiliara propriu-zisa pana la asistenta necesara la perfectarea tuturor documentelor aferente unei tranzactii). Cu cat o firma de dimensiune mica si mijlocie ofera asistenta in toate etapele derularii unei tranzactii (Administratie Financiara, Cadastru, Notariat, etc), cu atat sansele acesteia de a castiga teren in fata concurentei cresc. Agentia imobiliara Andrada Imobiliare SRL doreste sa se distinga de restul agentiilor si sa isi creasca numarul de clienti prin procurarea unei aplicatii web, care sa utilizeze baza de date existenta si sa permita utilizatorilor o cautare avansata a imobilelor inregistrate in baza de date precum si rapoarte detaliate a proprietatilor.</p>
 		<h2 class="p4"><br><br>Cele mai noi proprietati</h2>
         <div class="wrap block-1">
-          <div> <img src="media/images/casa1.jpg" alt="" class="img-border">
+          <div> <img src="<?php echo $config['domain'];?>/media/images/casa1.jpg" alt="" class="img-border">
             <h3>CASE</h3>
             <p>Pentru a putea vedea toate casele disponibile apasa pe buton de mai jos.</p>
             <a href="case.php" class="button">Mai multe</a> </div>
-          <div> <img src="media/images/apartamente1.jpg" alt="" class="img-border">
+          <div> <img src="<?php echo $config['domain'];?>/media/images/apartamente1.jpg" alt="" class="img-border">
             <h3>APARTAMENTE</h3>
             <p>In aceasta sectiune se pot vizualiza toate apartamentele disponibile. Click pe butonul de mai jos pentru mai multe detalii.</p>
             <a href="apartamente.php" class="button">Mai multe</a> </div>
-          <div class="last"> <img src="media/images/comercial1.jpg" alt="" class="img-border">
+          <div class="last"> <img src="<?php echo $config['domain'];?>/media/images/comercial1.jpg" alt="" class="img-border">
             <h3>COMERCIALE</h3>
             <p>Pentru a vizualiza toate spatiile comerciale disponibile apasa pe butonul de mai jos.</p>
             <a href="comerciale.php" class="button">Mai multe</a> </div>

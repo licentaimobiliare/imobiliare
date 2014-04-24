@@ -2,20 +2,20 @@
 <head>
 <title></title>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css/jqtransform.css">
-<script src="js/jquery-1.7.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/cufon-yui.js"></script>
-<script src="js/vegur_400.font.js"></script>
-<script src="js/Vegur_bold_700.font.js"></script>
-<script src="js/cufon-replace.js"></script>
-<script src="js/tms-0.4.x.js"></script>
-<script src="js/jquery.jqtransform.js"></script>
-<script src="js/FF-cash.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $config['domain'];?>/media/css/reset.css">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $config['domain'];?>/media/css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $config['domain'];?>/media/css/grid_12.css">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $config['domain'];?>/media/css/slider.css">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $config['domain'];?>/media/css/jqtransform.css">
+<script src="<?php echo $config['domain'];?>/media/js/jquery-1.7.min.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/jquery.easing.1.3.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/cufon-yui.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/vegur_400.font.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/Vegur_bold_700.font.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/cufon-replace.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/tms-0.4.x.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/jquery.jqtransform.js"></script>
+<script src="<?php echo $config['domain'];?>/media/js/FF-cash.js"></script>
 <script>
 $(document)
     .ready(function () {
@@ -40,23 +40,35 @@ $(document)
     })
 });
 </script>
-<!--[if lt IE 9]>
-<script src="js/html5.js"></script>
-<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
-<![endif]-->
+
 </head>
   <header>
     <div>
-      <h1><a href="index.php"><img src="<?php echo APP_URL?>/media/images/logo.jpg" alt=""></a></h1>
+      <h1><a href="/index.php"><img src="<?php echo $config['domain'];?>/media/images/logo.jpg" alt=""></a></h1>
       <div class="social-icons">
 			
 			<?php
 			
+        if(!isset($_SESSION))
+                {
+                session_start();
+                
+                }
+               
+       //var_dump($_SESSION);
+                
+                
 			function login(){
 		$ok=0;
-		$sql="SELECT nume_user, parola FROM users";
-		$resursa=mysql_query($sql);
+                 $connection = model_database::get_instance();                     
+               //  $sql = $connection->prepare("SELECT nume_user, parola FROM users");
+		
+			 $sql = $connection->prepare("SELECT nume_user, parola FROM users");
+                         $sql ->execute();
+                         $resursa = $sql -> fetchAll(PDO::FETCH_OBJ);
+		//$resursa=mysql_query($sql);
 		//var_dump($resursa);
+                //    echo "da";die;
 		if (($_SESSION['txtuser']!='') && ($_SESSION['txtpass']!=''))
 		{
 			while($row=mysql_fetch_array($resursa))
@@ -67,18 +79,22 @@ $(document)
 		}
 		return ok;
 		}
-		if ($_SESSION['txtuser'] != "")
-			{echo 'Te-ai autentificat ca <b>'.$_SESSION['txtuser'].'</b>';
+		if ($_SESSION['txtuser'] != "")  
+			{  //var_dump($_SESSION['txtuser']);
+                            //echo "da";die;
+                    echo 'Te-ai autentificat ca <b>'.$_SESSION['txtuser'].'</b>';
 			?>
-			 <form action="logout.php" method="post" >
+         <?php ?>
+			 <form action="/index.php/logout/index" method="post" >
 			<input type="submit" name="logout" size="8" value="Log-out"/>
 			</form>
 			<?php
 			}
 			else 
-			{echo 'Nu esti autentificat.Te rog logheaza-te!';
+			{
+                            echo 'Nu esti autentificat.Te rog logheaza-te!';
 			?>
-			 <form action="login.php" method="post" >
+			 <form action="/index.php/login/index" method="post" >
 			<input type="submit" name="signin" value="Log-in" size="8" / >
 			<form>
 			<?php
@@ -88,20 +104,20 @@ $(document)
       <div id="slide">
         <div class="slider">
           <ul class="items">
-            <li><img src="<?php echo APP_URL;?>/media/images/slider-1.jpg" alt=""></li>
-            <li><img src="media/images/slider-2.jpg" alt=""></li>
-            <li><img src="media/images/slider-3.jpg" alt=""></li>
+            <li><img src="<?php echo $config['domain'];?>/media/images/slider-1.jpg" alt=""></li>
+            <li><img src="<?php echo $config['domain'];?>/media/images/slider-2.jpg" alt=""></li>
+            <li><img src="<?php echo $config['domain'];?>/media/images/slider-3.jpg" alt=""></li>
           </ul>
         </div>
         <a href="#" class="prev"></a><a href="#" class="next"></a> </div>
       <nav>
         <ul class="menu">
-          <li class="current"><a href="index.php">Acasa</a></li>
-          <li><a href="cautare.php">Cautare</a></li>
+          <li><a href="/index.php">Acasa</a></li>
+          <li><a href="/index.php/cautare/index">Cautare</a></li>
           <li><a href="harta.php">Harta</a></li>
           <li><a href="comerciale.php">Comerciale</a></li>
-          <li><a href="login.php">Acces</a></li>
-          <li><a href="reclamatii.php">Reclamatii</a></li>
+          <li><a href="/index.php/login/index">Acces</a></li>
+          <li><a href="/index.php/reclamatii/index">Reclamatii</a></li>
         </ul>
       </nav>
     </div>

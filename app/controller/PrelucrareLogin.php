@@ -6,6 +6,9 @@ class controller_PrelucrareLogin {
 
 	function action_index($params) {
 
+            $connection = model_database::get_instance();
+	 
+             
 		if($_POST['txtuser']=="")
 	{
 		print '<font color="red">Trebuie sa completezi acest camp!</font><br>';
@@ -20,8 +23,15 @@ class controller_PrelucrareLogin {
 	$ok=0;
 	$_SESSION['txtuser']=$_POST['txtuser'];
 	$_SESSION['txtpass']=$_POST['txtpass'];
-	$sql="SELECT nume_user, parola FROM users";
-	$resursa=mysql_query($sql);
+       // var_dump($_SESSION);
+        //echo "da";die;
+	 $sql = $connection->prepare("SELECT nume_user, parola FROM users");
+         $sql ->execute();
+         $resursa = $sql -> fetchAll(PDO::FETCH_OBJ);
+                         
+                       
+                       //var_dump($resursa)  ;
+	
 	while($row=mysql_fetch_array($resursa))
 	{
 		if($_SESSION['txtuser']==$row['nume_user'] && $_SESSION['txtpass']==$row['parola']) $ok=1;//verificam daca exista memorata o persoana cu username-ul 
@@ -31,7 +41,7 @@ class controller_PrelucrareLogin {
 	{
 		
 		print 'Welcome,'.$_SESSION['txtuser'];
-		print '<br><a href="index.php">Back</a>';//se va afisa in browser numele acestuia si un mesaj de bun venit
+		print '<br><a href="/index.php">Back</a>';//se va afisa in browser numele acestuia si un mesaj de bun venit
 	}
 	else
 	{
@@ -39,9 +49,8 @@ class controller_PrelucrareLogin {
 		echo '<font color="red">Numele de utilizator si parola sunt gresite!</font><br>';
 		print '<a href="login.php">Inapoi la pagina de logare!</a>';
 	}
-	     header ("location:controller/home.php");
+	    // header ("location:/index.php");
 		@include_once APP_PATH . 'view/PrelucrareLogin_index.tpl.php';
 	
 	}
-
-}
+        }

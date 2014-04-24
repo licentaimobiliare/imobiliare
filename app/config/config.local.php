@@ -6,7 +6,7 @@ $config['folder'] = '/index.php';
 $config['database']['host'] = '127.0.0.1';
 $config['database']['user'] = 'root';
 $config['database']['password'] = '';
-$config['database']['name'] = 'imobilie_schema';
+$config['database']['name'] = 'imobiliare';
 
 $config['default_controller'] = 'home';
 $config['default_action'] = 'index';
