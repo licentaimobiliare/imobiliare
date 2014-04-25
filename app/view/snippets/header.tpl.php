@@ -48,54 +48,45 @@ $(document)
       <div class="social-icons">
 			
 			<?php
-			
-        if(!isset($_SESSION))
-                {
-                session_start();
-                
-                }
-               
-       //var_dump($_SESSION);
-                
-                
+		$connection = model_database::get_instance();  	
 			function login(){
 		$ok=0;
-                 $connection = model_database::get_instance();                     
-               //  $sql = $connection->prepare("SELECT nume_user, parola FROM users");
-		
-			 $sql = $connection->prepare("SELECT nume_user, parola FROM users");
-                         $sql ->execute();
+                                    
+			 $sql = $connection->prepare("SELECT nume_user, parola FROM users where nume_user=?");
+                         $sql ->execute(array($_POST['txtuser']));
                          $resursa = $sql -> fetchAll(PDO::FETCH_OBJ);
-		//$resursa=mysql_query($sql);
-		//var_dump($resursa);
-                //    echo "da";die;
-		if (($_SESSION['txtuser']!='') && ($_SESSION['txtpass']!=''))
-		{
-			while($row=mysql_fetch_array($resursa))
-			{
-				if($_SESSION['txtuser']==$row['nume_user'] && $_SESSION['txtpass']==$row['parola'])
-					$ok=1;
-			}
-		}
+	//var_dump($_SESSION['txtpass']);
+            if(count($resursa) == 0) 
+            echo "Nu exista acest utilizator in baza de date";
+         else 
+           if($resursa[0]->parola == $_POST['txtpass']) 
+               $ok=1;
+           else 
+                    echo "Parola introdusa este gresita";
+                       //var_dump($resursa)  ;
+	 
+		
 		return ok;
 		}
+              //  var_dump($_SESSION['txtuser']);
+                
+                if (ok == 1)
+                {
 		if ($_SESSION['txtuser'] != "")  
-			{  //var_dump($_SESSION['txtuser']);
-                            //echo "da";die;
-                    echo 'Te-ai autentificat ca <b>'.$_SESSION['txtuser'].'</b>';
+			{echo 'Te-ai autentificat ca <b>'.$_SESSION['txtuser'].'</b>';
 			?>
-         <?php ?>
+         
 			 <form action="/index.php/logout/index" method="post" >
 			<input type="submit" name="logout" size="8" value="Log-out"/>
 			</form>
 			<?php
-			}
+                }}
 			else 
 			{
                             echo 'Nu esti autentificat.Te rog logheaza-te!';
 			?>
 			 <form action="/index.php/login/index" method="post" >
-			<input type="submit" name="signin" value="Log-in" size="8" / >
+			<input type="submit" name="signin" value="Log-in" size="8" />
 			<form>
 			<?php
 		}
@@ -122,4 +113,4 @@ $(document)
       </nav>
     </div>
   </header>
-  
+  <body>

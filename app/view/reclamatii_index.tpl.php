@@ -1,6 +1,5 @@
 <?php @include APP_PATH . 'view/snippets/header.tpl.php'; ?>
 
-<body>
 <div class="main">
  <section id="content">
     <div class="container_12">
@@ -41,13 +40,13 @@
     </div>
   </section>
 </div>
-<?php 
+<!--<?php 
 	if ($sec==0)
 	{
-?>
+?>-->
 <div class="grid_4">
         <div class="left-1">
-          <h2 class="top-1 p3">Nu esti autentificat. Pentru a avea acces la aceasta pagina te rog sa te loghezi!</h2>
+         <!-- <h2 class="top-1 p3">Nu esti autentificat. Pentru a avea acces la aceasta pagina te rog sa te loghezi!</h2>-->
  <!-- <label> Nu esti autentificat. Pentru a avea acces la aceasta pagina te rog sa te loghezi! </label> -->
  </div>
  </div>

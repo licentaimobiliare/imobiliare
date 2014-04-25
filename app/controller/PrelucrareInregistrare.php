@@ -61,7 +61,7 @@ class controller_PrelucrareInregistrare {
 		</script>
 
 <?php
-header("location:controller/home.php");
+header("/index.php");
 	}
 		@include_once APP_PATH . 'view/PrelucrareInregistrare_index.tpl.php';
 	

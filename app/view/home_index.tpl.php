@@ -1,7 +1,5 @@
 <?php @include APP_PATH . 'view/snippets/header.tpl.php'; ?>
 
-<body>
-
 <div class="main">
 <section id="content">
     <div class="container_12">
@@ -38,7 +36,7 @@
 				<option></option>
               </select>
             </div>
-            <div>
+           <div>
               <label>Cartier/Strada</label>
               <input type="text" value="Address, City, Zip" onBlur="if(this.value=='') this.value='Address, Zip'" onFocus="if(this.value =='Address, City, Zip' ) this.value=''">
             </div>
