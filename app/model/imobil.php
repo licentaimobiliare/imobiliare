@@ -219,5 +219,57 @@ class model_imobil{
             
             return $results;
     }
+    
+    public static function addImobil($imobil){
+        
+        $keys=array();$values=array();
+        foreach($imobil as $key => $value){
+            if($key != 'adresa' && $key != 'camere')
+            {
+                $keys[]=$key;
+                $values[]=$value;
+            }
+        }
+        
+        $connection= model_database::get_instance();
+        
+        $stmt =$connection->prepare('insert into imobil('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
+        $stmt->execute($values);
+        
+        $id = $connection->lastInsertId();
+        
+        $stmt = $connection->prepare('insert into rel_cod_strada_numar_imobil values(?,?,?,?)');
+        $stmt->execute(array($imobil['adresa']['idcp'],$imobil['adresa']['ids'],$imobil['adresa']['idn'],$id));
+        
+        foreach ($imobil['camere'] as $camera) {
+            $stmt = $connection->prepare('insert into camere values(?,?,?)');
+            $stmt->execute(array($id, $camera['nr_camere'],$camera['tip_camera']));
+        }
+        
+        return $id;
+    }
+    
+    public static function addProprietar($proprietar){
+        $keys=array();$values=array();
+        foreach($proprietar as $key => $value){
+            if($key != 'adresa' && $key != 'camere')
+            {
+                $keys[]=$key;
+                $values[]=$value;
+            }
+        }
+        
+        $connection= model_database::get_instance();
+        
+        $stmt =$connection->prepare('insert into imobil('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
+        try{
+            $stmt->execute($values);
+            return true;
+        }
+        catch(Exception $e){
+            return false;
+        }
+        
+    }
 }
 

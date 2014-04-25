@@ -6,7 +6,12 @@ class controller_ajax{
         
         $connection = model_database::get_instance();
         
-        $query = 'select * from imobil where ';
+        $query = 'select i.idi from imobil as i inner join'
+            . ' rel_cod_strada_numar_imobil as r on'
+            . 'i.idi = r.idi '
+            . (isset($filter['idts']) && is_numeric($filter['idts']) ? 
+            'inner join strazi as s on r.ids=s.ids and idts='.$filter['idts'] : '')
+            . ' where ';
         
         if(isset($filter['idf']) && is_numeric($filter['idf']))
             $query +='idf='.$filter['idf'].' and ';
@@ -28,5 +33,11 @@ class controller_ajax{
         if($filter['data_inregistrare'] == 'crescator')
             $query += 'data_inregistrare asc';
         else $query+='data_inregistrare desc';
+        
+        $stmt = $connection ->prepare($query);
+        $stmt->execute();
+        $results= $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        echo json_encode($results);
     }
 }
