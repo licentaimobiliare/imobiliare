@@ -252,19 +252,16 @@ class model_imobil{
     public static function addProprietar($proprietar){
         $keys=array();$values=array();
         foreach($proprietar as $key => $value){
-            if($key != 'adresa' && $key != 'camere')
-            {
                 $keys[]=$key;
                 $values[]=$value;
-            }
         }
         
         $connection= model_database::get_instance();
         
-        $stmt =$connection->prepare('insert into imobil('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
+        $stmt =$connection->prepare('insert into proprietari('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
         try{
             $stmt->execute($values);
-            return true;
+            return $connection->lastInsertId();
         }
         catch(Exception $e){
             return false;
