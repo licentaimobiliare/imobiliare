@@ -175,7 +175,22 @@ class model_imobil{
             $stmt->execute($id);
             $camere= $stmt ->fetchAll(PDO::FETCH_ASSOC);
             
-            foreach ($results as $r){
+            foreach ($results as $r) {
+                $stmt = $connection->prepare('select * from proprietari where cnp = ?');
+                $stmt->execute(array($r->idi));
+                $result = $stmt->fetch();
+                //mapez proprietaru
+                $results->proprietar = array(
+                    'nume' => $result['nume'],
+                    'strada' => $result['strada'],
+                    'nr' => $result['nr'],
+                    'bl' => $result['bl'],
+                    'ap' => $result['ap'],
+                    'sc' => $result['sc'],
+                    'et' => $result['et'],
+                    'oras' => $result['oras'],
+                    'judet' => $result['judet']
+                );
                 //mapez camerele
                 $r->camere = array();
                 foreach ($camere as $c)
@@ -203,6 +218,55 @@ class model_imobil{
             }
             
             return $results;
+    }
+    
+    public static function addImobil($imobil){
+        
+        $keys=array();$values=array();
+        foreach($imobil as $key => $value){
+            if($key != 'adresa' && $key != 'camere')
+            {
+                $keys[]=$key;
+                $values[]=$value;
+            }
+        }
+        
+        $connection= model_database::get_instance();
+        
+        $stmt =$connection->prepare('insert into imobil('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
+        $stmt->execute($values);
+        
+        $id = $connection->lastInsertId();
+        
+        $stmt = $connection->prepare('insert into rel_cod_strada_numar_imobil values(?,?,?,?)');
+        $stmt->execute(array($imobil['adresa']['idcp'],$imobil['adresa']['ids'],$imobil['adresa']['idn'],$id));
+        
+        foreach ($imobil['camere'] as $camera) {
+            $stmt = $connection->prepare('insert into camere values(?,?,?)');
+            $stmt->execute(array($id, $camera['nr_camere'],$camera['tip_camera']));
+        }
+        
+        return $id;
+    }
+    
+    public static function addProprietar($proprietar){
+        $keys=array();$values=array();
+        foreach($proprietar as $key => $value){
+                $keys[]=$key;
+                $values[]=$value;
+        }
+        
+        $connection= model_database::get_instance();
+        
+        $stmt =$connection->prepare('insert into proprietari('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
+        try{
+            $stmt->execute($values);
+            return $connection->lastInsertId();
+        }
+        catch(Exception $e){
+            return false;
+        }
+        
     }
 }
 
