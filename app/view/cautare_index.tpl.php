@@ -27,5 +27,13 @@
         <input type="button" value="Cauta" />
     </div>
 </div>
+<div class="container">
+    <div class="item clona">
+        <span class="title">Titlu</span>
+        <span class="pret">Pret</span>
+        <span class="cartier">Cartier</span>
+        <span class="data_inregistrare">Data inregistrare</span>
+    </div>
+</div>
 <?php @include_once APP_PATH.'view/snippets/footer.tpl.php'; ?>
 

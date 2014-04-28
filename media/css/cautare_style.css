@@ -17,4 +17,19 @@ display: block !important;
 
 #cautare_avansata{
     height: 0px;
+    overflow: hidden;
+}
+
+.container{
+    min-height: 100%;
+    margin: 0px 10px;
+}
+
+.container .item{
+    float: left;
+    border: 1px solid #FFF;
+}
+
+.container .item span{
+    display: block;
 }
