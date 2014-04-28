@@ -9,6 +9,8 @@ class controller_ajax{
         $query = 'select i.idi from imobil as i inner join'
             . ' rel_cod_strada_numar_imobil as r on'
             . 'i.idi = r.idi '
+            . (isset($filter['ids']) && is_numeric($filter['ids']) ? 
+            'and r.ids='.$filter['idts'] : '')
             . (isset($filter['idts']) && is_numeric($filter['idts']) ? 
             'inner join strazi as s on r.ids=s.ids and idts='.$filter['idts'] : '')
             . ' where ';
