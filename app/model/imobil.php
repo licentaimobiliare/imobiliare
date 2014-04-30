@@ -13,9 +13,11 @@ class model_imobil{
                                         inner join tip_locuinte as tl on i.idtl=tl.idtl
                                         inner join tip_constructii as tc on i.idt_constructie=tc.idtc
                                         inner join tip_imobil as ti on i.idti = ti.idti
-                                        where i.idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')');
-
-            $stmt ->execute($id);
+                                        where i.idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(idi ,'.str_pad('', count($id) * 2 - 1, '?,').')');
+            
+            $orderid= array_merge_recursive($id,$id);
+            $stmt ->execute($orderid);
             $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
 
             $stmt = $connection ->prepare('select di.*,tip_strada,nume,cod_postal,numar
