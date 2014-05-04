@@ -28,7 +28,7 @@ class model_imobil{
                 where r.idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')');
             
             $stmt->execute($id);
-            $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            $adresa=$stmt->fetchAll(PDO::FETCH_ASSOC);
             
             $stmt = $connection -> prepare ('select * from camere where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')');
             $stmt->execute($id);
@@ -36,10 +36,10 @@ class model_imobil{
             
             foreach ($results as $r){
                 $stmt = $connection->prepare('select * from proprietari where cnp = ?');
-                $stmt->execute(array($results->idp));
+                $stmt->execute(array($r->idp));
                 $result = $stmt->fetch();
                 //mapez proprietaru
-                $results->proprietar = array(
+                $r->proprietar = array(
                     'nume' => $result['nume'],
                     'strada' => $result['strada'],
                     'nr' => $result['nr'],
@@ -59,20 +59,20 @@ class model_imobil{
                         unset($c);//pentru optimizare scoatem din lista ce deja am bagat
                     }
                 //mapez adressa
-                for($i=0;$i<count($result);$i++)
-                    if($result[$i]['idi']==$r->idi){
+                for($i=0;$i<count($adresa);$i++)
+                    if($adresa[$i]['idi']==$r->idi){
                         $pozitie=$i;
                         $id=  count($result);//fortez iesirea pentru a nu mai pierde timp
                     }
                 $r->adresa = array(
-                    'tip_strada' => $result[$pozitie]['tip_strada'],
-                    'nume_strada' => $result[$pozitie]['nume'],
-                    'cod_postal' => $result[$pozitie]['cod_postal'],
-                    'numar' => $result[$pozitie]['numar'],
-                    'numar_imobil' => $result[$pozitie]['nr'],
-                    'apartament' => $result[$pozitie]['apartament'],
-                    'scara' => $result[$pozitie]['scara'],
-                    'etaj' => $result[$pozitie]['etaj']
+                    'tip_strada' => $adresa[$pozitie]['tip_strada'],
+                    'nume_strada' => $adresa[$pozitie]['nume'],
+                    'cod_postal' => $adresa[$pozitie]['cod_postal'],
+                    'numar' => $adresa[$pozitie]['numar'],
+                    'numar_imobil' => $adresa[$pozitie]['nr'],
+                    'apartament' => $adresa[$pozitie]['apartament'],
+                    'scara' => $adresa[$pozitie]['scara'],
+                    'etaj' => $adresa[$pozitie]['etaj']
                 );
             }
         }
