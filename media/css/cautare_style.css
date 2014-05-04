@@ -33,3 +33,7 @@ display: block !important;
 .container .item span{
     display: block;
 }
+
+.clona{
+    display: none !important;
+}
