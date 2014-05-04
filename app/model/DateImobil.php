@@ -19,6 +19,16 @@ class model_DateImobil{
             return false;
         }
 }
+
+    public static function FinisajGetById($id)
+    {
+         $connection= model_database::get_instance();
+        $stmt = $connection -> prepare('Select * from finisaje where idf = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        return $results;
+    }
+
 }
 
 
