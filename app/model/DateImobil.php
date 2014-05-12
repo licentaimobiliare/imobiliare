@@ -966,10 +966,552 @@ class model_DateImobil{
          return $object;
    }
    
+   public static function updateproprietar($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update proprietari set nume=?,strada=?,nr=?,bl=?,ap=?,sc=?,et=?,oras=?,judet=? where cnp=?");    
+         $stmt->execute(array($a['nume'],$a['strada'],$a['nr'],$a['bl'],$a['ap'],$a['sc'],$a['et'],$a['oras'],$a['judet'],$a['cnp']));
+         $object = new stdClass();
+         $object->nume = $a['nume'] ;
+         $object->strada = $a['strada'] ;
+         $object->nr= $a['nr'] ;
+         $object->bl = $a['bl'] ;
+         $object->ap = $a['ap'] ;
+         $object->sc = $a['sc'] ;
+         $object->et = $a['et'] ;
+         $object->oras= $a['oras'];
+         $object->judet= $a['judet'];
+         $object->cnp=$a['cnp'];
+         return $object;
+   }
    
+    public static function updateservicii($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update servicii set serviciu=? where ids=?");    
+         $stmt->execute(array($a['serviciu'],$a['ids']));
+         $object = new stdClass();
+         $object->serviciu = $a['serviciu'] ;
+         $object->ids = $a['ids'] ;  
+         return $object;
+   }
+   
+   public static function updatemarkers($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update markers set name=?,address=?,lat=?,lng=?,type=? where id=?");    
+         $stmt->execute(array($a['name'],$a['address'],$a['lat'],$a['lng'],$a['type'],$a['id']));
+         $object = new stdClass();
+         $object->name = $a['name'] ;
+         $object->address = $a['address'] ;
+         $object->lat= $a['lat'] ;
+         $object->lng = $a['lng'] ;
+         $object->type = $a['type'] ;
+         $object->id = $a['id'] ;
+         return $object;
+   }
+   
+     public static function adaugastrada($strada){
+    $keys=array();$values=array();
+        foreach($strada as $key => $value){
+                $keys[]=$key;
+                $values[]=$value;
+            }
+     
+        $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare('insert into strazi('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
+         try{
+            $stmt->execute($values);
+            return $connection->lastInsertId();
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    
+      public static function adaugatranzactii($tranzactie){
+        $keys=array();$values=array();
+        foreach($tranzactie as $key => $value){
+                $keys[]=$key;
+                $values[]=$value;
+            }    
+        $connection= model_database::get_instance();      
+         $stmt =$connection->prepare('insert into tranzactii('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
+         try{
+            $stmt->execute($values);
+            return $connection->lastInsertId();
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    
+    public static function adaugaDateImobil($dateimobil){
+        $keys=array();$values=array();
+        foreach($dateimobil as $key => $value){
+                $keys[]=$key;
+                $values[]=$value;
+            }    
+        $connection= model_database::get_instance();      
+         $stmt =$connection->prepare('insert into date_imobile('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
+         try{
+            $stmt->execute($values);
+            return $connection->lastInsertId();
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+   
+    public static function adaugacamere($camera){
+        $keys=array();$values=array();
+        foreach($camera as $key => $value){
+                $keys[]=$key;
+                $values[]=$value;
+            }    
+        $connection= model_database::get_instance();      
+         $stmt =$connection->prepare('insert into camere('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
+         try{
+            $stmt->execute($values);
+            return $connection->lastInsertId();
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    
+    public static function adaugaRelCodStradaNumarImobil($rel){
+        $keys=array();$values=array();
+        foreach($rel as $key => $value){
+                $keys[]=$key;
+                $values[]=$value;
+            }    
+        $connection= model_database::get_instance();      
+         $stmt =$connection->prepare('insert into rel_cod_strada_numar_imobil('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
+         try{
+            $stmt->execute($values);
+            return $connection->lastInsertId();
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    
+    public static function updatestrazi($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update strazi set nume=?,idts=? where ids=?");    
+         $stmt->execute(array($a['nume'],$a['idts'],$a['ids']));
+         $object = new stdClass();
+         $object->nume = $a['nume'] ;
+         $object->idts = $a['idts'] ; 
+         $object->ids = $a['ids'] ; 
+         return $object;
+   }
+   
+   public static function updatetranzactii($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update tranzactii set idi=?,ids=?,data_vanzare=?,data_final_vanzare=? where cnp=?");    
+         $stmt->execute(array($a['idi'],$a['ids'],$a['data_vanzare'],$a['data_final_vanzare'],$a['cnp']));
+         $object = new stdClass();
+         $object->idi = $a['idi'] ;
+         $object->ids = $a['ids'] ; 
+         $object->data_vanzare = $a['data_vanzare'] ; 
+         $object->data_final_vanzare = $a['data_final_vanzare'];
+         return $object;
+   }
+   
+   public static function updateclienti($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update clienti set nume=?,prenume=?,telefon=? where cnp=?");    
+         $stmt->execute(array($a['nume'],$a['prenume'],$a['telefon'],$a['cnp']));
+         $object = new stdClass();
+         $object->nume = $a['nume'] ;
+         $object->prenume = $a['prenume'] ; 
+         $object->telefon = $a['telefon'] ; 
+         $object->cnp= $a['cnp'];
+         return $object;
+   }
+   
+   public static function updateDateImobil($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update date_imobile set nr=?,apartament=?,scara=?,etaj=? where idi=?");    
+         $stmt->execute(array($a['nr'],$a['apartament'],$a['scara'],$a['etaj'],$a['idi']));
+         $object = new stdClass();
+         $object->nr = $a['nr'] ;
+         $object->apartament = $a['apartament'] ; 
+         $object->scara = $a['scara'] ; 
+         $object->etaj = $a['etaj'];
+         $object->idi = $a['idi'];
+         return $object;
+   }
+   
+    public static function updatecamere($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update camere set nr_camere=?,tip_camera=? where idi=?");    
+         $stmt->execute(array($a['nr_camere'],$a['tip_camera'],$a['idi']));
+         $object = new stdClass();
+         $object->nr_camere = $a['nr_camere'] ;
+         $object->tip_camera = $a['tip_camera'] ; 
+         $object->idi = $a['idi'];
+         return $object;
+   }
+   
+   public static function updateRelCodStradaNumarImobil($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update rel_cod_strada_numar_imobil set idcp=?,ids=?,idn=? where idi=?");    
+         $stmt->execute(array($a['idcp'],$a['ids'],$a['idn'],$a['idi']));
+         $object = new stdClass();
+         $object->idcp = $a['idcp'] ;
+         $object->ids = $a['ids'] ; 
+         $object->idn = $a['idn'] ; 
+         $object->idi = $a['idi'];
+         return $object;
+   }
+   
+   public static function updateimobil($a)
+   {         
+         $connection= model_database::get_instance();
+         $stmt =$connection->prepare("update imobil set pret=?,cartier=?,data_inregistrare=?,mp=?,descriere=?,idf=?,idt_constructie=?,idtl=?,idti=?,data_constructie=?,idp=? where idi=?");    
+         $stmt->execute(array($a['pret'],$a['cartier'],$a['data_inregistrare'],$a['mp'],$a['descriere'],$a['idt_constructie'],$a['idtl'],$a['idti'],$a['data_constructie'],$a['idp'],$a['idi']));
+         $object = new stdClass();
+         $object->nume = $a['nume'] ;
+         $object->strada = $a['strada'] ;
+         $object->nr= $a['nr'] ;
+         $object->bl = $a['bl'] ;
+         $object->ap = $a['ap'] ;
+         $object->sc = $a['sc'] ;
+         $object->et = $a['et'] ;
+         $object->oras= $a['oras'];
+         $object->judet= $a['judet'];
+         $object->cnp=$a['cnp'];
+         return $object;
+   }
+   
+   public static function deletestrazi($id)
+   {   
+         $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare("delete from strazi where ids= $id");           
+         try{
+            $stmt->execute(array($id));         
+            return true;
+        } 
+        catch(Exception $e){  
+            return false;
+        }  
+   }
+   
+   public static function deletetranzactii($id)
+   {   
+         $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare("delete from tranzactii where cnp= $id");           
+         try{
+            $stmt->execute(array($id));         
+            return true;
+        } 
+        catch(Exception $e){  
+            return false;
+        }  
+   }
+   
+   public static function deleteDateImobil($id)
+   {   
+         $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare("delete from date_imobil where idi= $id");           
+         try{
+            $stmt->execute(array($id));         
+            return true;
+        } 
+        catch(Exception $e){  
+            return false;
+        }  
+   }
+   
+   public static function deletecamere($id)
+   {   
+         $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare("delete from camere where idi= $id");           
+         try{
+            $stmt->execute(array($id));         
+            return true;
+        } 
+        catch(Exception $e){  
+            return false;
+        }  
+   }
+   
+   public static function deleteRelCodStradaNumarImobil($id)
+   {   
+         $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare("delete from rel_cod_strada_numar_imobil where idi= $id");           
+         try{
+            $stmt->execute(array($id));         
+            return true;
+        } 
+        catch(Exception $e){  
+            return false;
+        }  
+   }
+   
+   public static function deleteimobil($id)
+   {   
+         $connection= model_database::get_instance();
+        
+         $stmt =$connection->prepare("delete from imobil where idi= $id");           
+         try{
+            $stmt->execute(array($id));         
+            return true;
+        } 
+        catch(Exception $e){  
+            return false;
+        }  
+   }
+   
+     public static function StraziGetById($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from strazi                                
+                                        where ids in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(ids ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from strazi where ids = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
+   
+   public static function StraziGetByName($name)
+   {       
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from strazi where nume=?" );       
+       $stmt-> execute(array($name));
+       $results = $stmt ->fetchObject(); 
+       return $results;
+       
+   }
+   
+    public static function StraziListName($name)
+   {
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from strazi where nume like ?" );     
+       $stmt-> execute(array($name.'%'));
+        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+       return $results;
+   }
+   
+   public static function TranzactiiGetById($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from tranzactii                                
+                                        where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(idi ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from tranzactii where idi = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
+   
+   public static function TranzactiiGetByName($name)
+   {       
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from tranzactii where cnp=?" );       
+       $stmt-> execute(array($name));
+       $results = $stmt ->fetchObject(); 
+       return $results;
+       
+   }
+   
+    public static function TranzactiiListName($name)
+   {
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from tranzactii where cnp like ?" );     
+       $stmt-> execute(array($name.'%'));
+        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+       return $results;
+   }
+   
+   public static function DateImobilGetById($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from date_imobil                                
+                                        where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(idi ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from date_imobil where idi = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
+   
+   public static function DateImobilGetByName($name)
+   {       
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from date_imobil where nr=?" );       
+       $stmt-> execute(array($name));
+       $results = $stmt ->fetchObject(); 
+       return $results;
+       
+   }
+   
+    public static function DateImobilListName($name)
+   {
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from date_imobil where nr like ?" );     
+       $stmt-> execute(array($name.'%'));
+        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+       return $results;
+   }
+   
+   public static function CamereGetById($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from camere                                
+                                        where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(idi ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from camere where idi = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
+   
+   public static function CamereGetByName($name)
+   {       
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from camere where tip_camera=?" );       
+       $stmt-> execute(array($name));
+       $results = $stmt ->fetchObject(); 
+       return $results;
+       
+   }
+   
+    public static function CamereListName($name)
+   {
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from camere where tip_camera like ?" );     
+       $stmt-> execute(array($name.'%'));
+        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+       return $results;
+   }
+   
+   public static function RelCodStradaNumarImobilGetById($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from rel_cod_strada_numar_imobil                                
+                                        where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(idi ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from rel_cod_strada_numar_imobil where idi = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
+   
+   public static function RelCodStradaNumarImobilGetByName($name)
+   {       
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from rel_cod_strada_numar_imobil where idi=?" );       
+       $stmt-> execute(array($name));
+       $results = $stmt ->fetchObject(); 
+       return $results;
+       
+   }
+   
+    public static function RelCodStradaNumarImobilListName($name)
+   {
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from rel_cod_strada_numar_imobil where idi like ?" );     
+       $stmt-> execute(array($name.'%'));
+        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+       return $results;
+   }
+   
+   public static function ImobilGetByName($name)
+   {       
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from imobile where cartier=?" );       
+       $stmt-> execute(array($name));
+       $results = $stmt ->fetchObject(); 
+       return $results;
+       
+   }
+   
+    public static function ImobileListName($name)
+   {
+       $connection= model_database::get_instance();
+       $stmt = $connection -> prepare("Select * from imobile where cartier like ?" );     
+       $stmt-> execute(array($name.'%'));
+        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+       return $results;
+   }
 }
-
-
 
 
         
