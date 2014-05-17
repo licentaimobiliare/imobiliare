@@ -37,3 +37,12 @@ display: block !important;
 .clona{
     display: none !important;
 }
+
+ul.ui-autocomplete.ui-menu{
+    width:168px !important;
+    background-color: white !important;
+}
+
+ul.ui-autocomplete.ui-menu li:hover{
+    color:blue;
+}

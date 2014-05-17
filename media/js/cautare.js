@@ -44,6 +44,48 @@ jQuery(document).ready(function(){
             search(false);
         }
     });
+
+    jQuery('#cautare_avansata input[type="text"]').off('change keyup').on('change keyup',
+            function() {
+                var domain = jQuery(this).attr('placeholder').replace(/\s/g, "").toLowerCase();
+                var value = jQuery(this).val();
+                jQuery(this).autocomplete({
+                    source: function(request, response) {
+                        jQuery.ajax({
+                            type: "POST",
+                            url: '/ajax/autocomplete/' + domain,
+                            dataType: 'json',
+                            data: {
+                               name: value
+                            },
+                            success: function(data) {
+                                response(jQuery.map(data, function(item) {
+                                    var nume=(domain == 'tipstrada' ? item.tip_strada :
+                                        (domain == 'strada' ? item.nume : 
+                                        (domain == 'finisaj' ? item.finisaj : 
+                                        (domain == 'tipconstructie' ? item.tip_constructie :
+                                        (domain == 'tiplocuinta' ? item.tip_locuinta : item.tip_imobil)))));
+                                
+                                    return {
+                                        label: nume,
+                                    }
+                                }));
+                            },
+                            error: function(){console.log('error');}
+                        });
+                    },
+                    messages: {
+                        noResults: '',
+                        results: function() {
+                        }
+                    },
+                    select: function(event, ui) {
+                        console.log(ui);
+                        var selectedObj = ui.item;
+                        console.log(selectedObj.value);
+                    }
+                });
+            });
     
     search();
     

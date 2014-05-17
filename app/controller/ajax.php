@@ -1,9 +1,21 @@
 <?php
 class controller_ajax{
     
+    public static function rafineazaFiltrarea($filter){
+        if(!empty($filter['ids']))$filter['ids']=  model_DateImobil::StraziGetByName ($filter['ids'])->ids;
+        if(!empty($filter['idts']))$filter['idts']= model_DateImobil::tsGetByName ($filter['idts'])->idts;
+        if(!empty($filter['idf']))$filter['idf']=  model_DateImobil::FinisajGetByName ($filter['idf'])->idf;
+        if(!empty($filter['idt_constructie']))$filter['idt_constructie']= model_DateImobil::tcGetByName ($filter['idt_constructie'])->idtc;
+        if(!empty($filter['idtl']))$filter['idtl']=  model_DateImobil::tlGetByName ($filter['idtl'])->idtl;
+        if(!empty($filter['idti']))$filter['idti']= model_DateImobil::tiGetByName ($filter['idti'])->idti;
+        
+        return $filter;
+    }
+    
     public function action_imobile($params){
         $filter=$_POST;
-        
+        $filter=  controller_ajax::rafineazaFiltrarea($filter);
+
         $connection = model_database::get_instance();
         
         $query = 'select i.idi from imobil as i inner join'
@@ -46,5 +58,27 @@ class controller_ajax{
         }
         $imobile = model_imobil::getById($idis);
         echo json_encode($imobile);
+    }
+    
+    public function action_autocomplete($params){
+
+        switch ($params[0]){
+            case "tipstrada":
+                echo json_encode(model_DateImobil::tsListName($_POST['name']));break;
+            case "strada":
+                echo json_encode(model_DateImobil::StraziListName($_POST['name']));break;
+            case "finisaj":
+                echo json_encode(model_DateImobil::FinisajListName($_POST['name']));break;
+            case "tipconstructie":
+                echo json_encode(model_DateImobil::tcListName($_POST['name']));break;
+            case "tiplocuinta":
+                echo json_encode(model_DateImobil::tlListName($_POST['name']));break;
+            case "tipimobil":
+                echo json_encode(model_DateImobil::tiListName($_POST['name']));break;
+            default:
+                echo json_encode("Nu exista autocomplet pentru parametru respectiv");break;
+        }
+        
+        die;
     }
 }

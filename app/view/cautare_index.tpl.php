@@ -1,5 +1,6 @@
 <?php @include_once APP_PATH.'view/snippets/header.tpl.php'; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $config['domain']; ?>/media/css/cautare_style.css" />
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="<?php echo $config['domain']; ?>/media/js/cautare.js"></script>
 <div class="cautare">
     <div>
