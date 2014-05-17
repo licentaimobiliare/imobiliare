@@ -6,6 +6,9 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // Main app path
 define('APP_PATH', dirname(realpath(__FILE__)) . '/app/');
 
+//define global variable from seesion
+if(!empty($_SESSION['user'])) $GLOBALS['user']=$_SESSION['user'];
+
 // Include config
 require_once APP_PATH . 'config/config.php';
 

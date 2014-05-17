@@ -12,6 +12,8 @@ class controller_login {
                     {
                         $_SESSION['txtuser']=$_POST['txtuser'];
                         $_SESSION['txtpass']=$_POST['txtpass'];
+                        global $user;
+                        $_SESSION['user']=$user;
                     }
                     else
                         if ($sec == 0)

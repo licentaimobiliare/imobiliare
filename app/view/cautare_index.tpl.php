@@ -3,6 +3,10 @@
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="<?php echo $config['domain']; ?>/media/js/cautare.js"></script>
 <div class="cautare">
+    <?php global $user;
+    if($user->tip == 'administrator'){ ?>
+    <a href="/imobil/adaugare">Adauga imobil</a>
+    <?php } ?>
     <div>
         Sortare dupa data inregistrarii
         <span><input type="radio" name="inregistrare" value="descrescator" checked/> Descrescator
