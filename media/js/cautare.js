@@ -80,9 +80,6 @@ jQuery(document).ready(function(){
                         }
                     },
                     select: function(event, ui) {
-                        console.log(ui);
-                        var selectedObj = ui.item;
-                        console.log(selectedObj.value);
                     }
                 });
             });
