@@ -1,0 +1,27 @@
+.imobil_form{
+    margin: 0 auto;
+    width: 400px;
+}
+
+.imobil_form input{
+    height: 30px;
+    margin: 5px 15px;
+}
+
+.imobil_form input[type="date"]{
+    width: 220px;
+    margin-left: 90px;
+}
+
+.imobil_form input[type="number"]{
+    width: 50px;
+}
+
+.imobil_form button:not(#adauga_camera){
+    margin-left: 100px;
+}
+
+.imobil_form p span{
+    float: right;
+    cursor: pointer;
+}

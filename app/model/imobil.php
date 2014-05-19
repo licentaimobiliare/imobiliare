@@ -263,7 +263,7 @@ class model_imobil{
         $stmt =$connection->prepare('insert into proprietari('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
         try{
             $stmt->execute($values);
-            return $connection->lastInsertId();
+            return $proprietar['cnp'];
         }
         catch(Exception $e){
             return false;
