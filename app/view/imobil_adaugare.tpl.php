@@ -1,5 +1,6 @@
 <?php @include_once APP_PATH.'view/snippets/header.tpl.php'; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $config['domain']; ?>/media/css/imobil_style.css" />
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="<?php echo $config['domain']; ?>/media/js/imobil_adaugare.js"></script>
 <?php if(!empty($message)){?>
 <p class="error"> <?php echo $message?></p>

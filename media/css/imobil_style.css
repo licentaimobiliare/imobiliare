@@ -25,3 +25,16 @@
     float: right;
     cursor: pointer;
 }
+
+ul.ui-autocomplete.ui-menu{
+    width:168px !important;
+    background-color: white !important;
+}
+
+ul.ui-autocomplete.ui-menu li:hover{
+    color:blue;
+}
+
+span.ui-helper-hidden-accessible{
+    display: none !important;
+}

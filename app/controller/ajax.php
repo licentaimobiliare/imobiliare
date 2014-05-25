@@ -75,6 +75,12 @@ class controller_ajax{
                 echo json_encode(model_DateImobil::tlListName($_POST['name']));break;
             case "tipimobil":
                 echo json_encode(model_DateImobil::tiListName($_POST['name']));break;
+            case 'proprietar':
+                echo json_encode(model_DateImobil::proprietariListName($_POST['name']));break;
+            case 'numarstrada':
+                echo json_encode(model_DateImobil::numarListName($_POST['name']));break;
+            case 'codpostal':
+                echo json_encode(model_DateImobil::cpListName($_POST['name']));break;
             default:
                 echo json_encode("Nu exista autocomplet pentru parametru respectiv");break;
         }
