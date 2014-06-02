@@ -68,6 +68,12 @@ class controller_imobil {
         @include APP_PATH.'view/imobil_adaugare.tpl.php';
     }
 
+    public function action_view($params){
+        $imobil = model_imobil::getById($params[0]);
+        
+        @include APP_PATH.'view/imobil_view.tpl.php';
+    }
+    
     private function valideazaFildurile($fields){
         if(!empty($fields['proprietar'])){
             foreach ($fields['prorietar'] as $field)
@@ -86,5 +92,6 @@ class controller_imobil {
 
         return true;
     }
+    
 
 }
