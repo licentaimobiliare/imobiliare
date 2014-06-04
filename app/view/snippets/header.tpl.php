@@ -74,9 +74,14 @@
                             <div id="slide">
                                 <div class="slider">
                                     <ul class="items">
+                                        <?php if(!$change){?>
                                         <li><img src="<?php echo $config['domain']; ?>/media/images/slider-1.jpg" alt=""></li>
                                         <li><img src="<?php echo $config['domain']; ?>/media/images/slider-2.jpg" alt=""></li>
                                         <li><img src="<?php echo $config['domain']; ?>/media/images/slider-3.jpg" alt=""></li>
+                                        <?php } else{
+                                            foreach($change_items as $item){?>
+                                            <li><img src="<?php echo $config['domain']; ?>/media/images/<?php echo $item;?>" alt=""></li>
+                                            <?php }} ?>
                                     </ul>
                                 </div>
                                 <a href="#" class="prev"></a><a href="#" class="next"></a> </div>

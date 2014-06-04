@@ -270,5 +270,27 @@ class model_imobil{
         }
         
     }
+    
+    public static function getPicutre($id){
+        $connection = model_database::get_instance();
+        $stmt=$connection->prepare('select * from poze_imobil where idi=?');
+        $stmt->execute(array($id));
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public static function addPicutres($pictures){
+        $connection = model_database::get_instance();
+        $query='insert into poze_imobil(idi,image) values ';
+        $values=array();
+        foreach ($pictures as $picture){
+            $query.='(?,?),';
+            $values[]=$picture['idi'];
+            $values[]=$picture['image'];
+        }
+        $query=  substr($query, 0, -1);
+        $stmt=$connection->prepare($query);
+        $stmt->execute($values);
+        return true;
+    }
 }
 

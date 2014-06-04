@@ -8,7 +8,7 @@ define('APP_PATH', dirname(realpath(__FILE__)) . '/app/');
 
 //define global variable from seesion
 if(!empty($_SESSION['user'])) $GLOBALS['user']=$_SESSION['user'];
-
+$GLOBALS['id_tip_imobile_apartament']=array(4,5);
 // Include config
 require_once APP_PATH . 'config/config.php';
 

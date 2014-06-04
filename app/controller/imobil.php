@@ -70,7 +70,26 @@ class controller_imobil {
 
     public function action_view($params){
         $imobil = model_imobil::getById($params[0]);
+        if (count($_FILES['filesToUpload'])) {
+            $pictures=array();
+            foreach ($_FILES['filesToUpload']['tmp_name'] as $file) {
+
+                if(!file_exists(dirname(APP_PATH).'/media/images/'.$params[0]))
+                    mkdir(dirname(APP_PATH).'/media/images/'.$params[0],0777,true);
+                $image='picture_'.uniqid().'.png';
+                if(move_uploaded_file($file, dirname(APP_PATH).'/media/images/'.$params[0].'/'.$image)){
+                    $pictures[]=array('idi' => $params[0],'image' => $image);
+                }
+            }
+            model_imobil::addPicutres($pictures);
+        }
         
+        $items=  model_imobil::getPicutre($params[0]);
+        $change = (count($items) ? true : false);
+        $change_items=array();
+        foreach($items as $item){
+            $change_items[]=$params[0].'/'.$item->image;
+        }
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     

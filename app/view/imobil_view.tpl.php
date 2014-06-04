@@ -1,6 +1,9 @@
 <?php @include_once APP_PATH.'view/snippets/header.tpl.php'; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $config['domain']; ?>/media/css/imobil_view.css" />
+<script src="<?php echo $config['domain']; ?>/media/js/imobil_view.js"></script>
 <?php // echo '<pre>';var_dump($imobil);die; ?>
+<script type="text/javascript">
+window.idi=<?php echo $imobil->idi;?></script>
 <div class="main">
         <div class="container_12">
             <div class="grid_8">
@@ -21,6 +24,14 @@
                     <p class="first"><span>Finisaj: </span><?php echo $imobil->finisaj;?></p>
                     <p><span>Data inregistrarii: </span><?php echo $imobil->data_inregistrare;?></p>
                 </div>
+                <?php global $user;
+                if ($user->tip == 'administrator') {
+                    ?>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    Poze imobil:<input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
+                    <button>Adauga</button>
+                </form>
+                <?php } ?>
             </div>
             <div class="grid_4">
                 <div class="camere">
@@ -34,6 +45,18 @@
                     <?php echo $imobil->descriere;?>
                 </div>
                 <hr />
+                <div>
+                    <h5>Adresa</h5>
+                    <p>
+                    <?php $adresa=$imobil->adresa;global $id_tip_imobile_apartament;
+                        echo $adresa['tip_strada'].' '.$adresa['nume_strada'].
+                            ' nr. '.$adresa['numar'].' cod postal '.$adresa['cod_postal'];
+                         if(in_array($adresa->idti, $id_tip_imobile_apartament))
+                             echo ' blocu '.$adresa['numar_imobil'].' ap. '.$adresa['apartament'].
+                             ' sc. '.$adresa['scara'].' et. '.$adresa['etaj'];
+                    ?>
+                    </p>
+                </div>
             </div>
         </div>
 </div>

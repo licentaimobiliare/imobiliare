@@ -87,4 +87,9 @@ class controller_ajax{
         
         die;
     }
+    
+    public function action_imobilpictures($params){
+        $result = model_imobil::getPicutre($params[0]);
+        echo json_encode($result);
+    }
 }
