@@ -1,0 +1,27 @@
+form input{
+    display: block;
+    margin: 10px auto;
+}
+
+form select{
+    display: block;
+    margin: 10px auto;
+}
+
+form button{
+    display: block;
+    margin: 10px auto;
+}
+
+ul.ui-autocomplete.ui-menu{
+    width:168px !important;
+    background-color: white !important;
+}
+
+ul.ui-autocomplete.ui-menu li:hover{
+    color:blue;
+}
+
+span.ui-helper-hidden-accessible{
+    display: none !important;
+}

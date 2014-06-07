@@ -31,6 +31,8 @@ window.idi=<?php echo $imobil->idi;?></script>
                     Poze imobil:<input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
                     <button>Adauga</button>
                 </form>
+                <button onclick="window.location.href=window.location.origin+'/imobil/tranzactie/<?php echo $imobil->idi ?>'">
+                    Tranzactie</button>
                 <?php } ?>
             </div>
             <div class="grid_4">

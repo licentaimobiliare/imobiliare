@@ -12,6 +12,7 @@ jQuery(document).ready(function(){
             delete window._filter['idt_constructie'];
             delete window._filter['idtl'];
             delete window._filter['idti'];
+            window._filter.page=1;
            jQuery('#cautare_avansata').animate({height: '0px'}, 300);
            jQuery(this).val('Cautare Avansata');
            search();

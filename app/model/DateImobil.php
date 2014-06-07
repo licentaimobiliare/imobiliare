@@ -1040,7 +1040,7 @@ class model_DateImobil{
          $stmt =$connection->prepare('insert into tranzactii('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
          try{
             $stmt->execute($values);
-            return $connection->lastInsertId();
+            return true;
         }
         catch(Exception $e){
             return false;

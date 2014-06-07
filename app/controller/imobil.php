@@ -93,6 +93,41 @@ class controller_imobil {
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     
+    public function action_tranzactie($params){
+        
+        global $user;
+        if(!in_array($user->tip, array('administrator','angajat'))){
+            echo 'Nu ai permisiuni pentru aceasta pagina!';
+            return FALSE;
+        }
+
+        if($_POST['Submit'] == 'submit'){
+            echo '<pre>';//print_r($_POST);die;
+            if(($client=model_DateImobil::clientiGetById($_POST['tranzactie']['client']['cnp']))){
+                $cnp=$client->cnp;
+            }
+            else{
+                model_DateImobil::adaugaclient($_POST['tranzactie']['client']);
+                $cnp=$_POST['tranzactie']['client']['cnp'];
+            }
+            $tranzactie=array(
+                'idi' => $_POST['idi'],
+                'cnp' => $cnp,
+                'ids' => $_POST['tranzactie']['servici']['ids'],
+            );
+            if(!empty($_POST['tranzactie']['data_final_tranzactie']))
+                $tranzactie['data_final_vanzare']=$_POST['tranzactie']['data_final_tranzactie'];
+            
+            model_DateImobil::adaugatranzactii($tranzactie);
+            header('Location: '.$config['domain'].'/imobil/view/'.$params[0]);
+        }
+        
+        $servicii = model_DateImobil::serviciiListName("%");
+        
+        
+        @include APP_PATH.'view/imobil_tranzactie.tpl.php';
+    }
+
     private function valideazaFildurile($fields){
         if(!empty($fields['proprietar'])){
             foreach ($fields['prorietar'] as $field)
