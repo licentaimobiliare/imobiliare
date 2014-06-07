@@ -58,9 +58,7 @@ class controller_imobil {
                 $idi = model_imobil::addImobil($imobil);
                 
                 $imobil = model_imobil::getById($idi);
-                echo '<pre>';
-                                print_r($imobil);
-                die;
+                header('Location: '.$config['domain'].'/imobil/view/'.$imobil->idi);
             }
             else $message = "Validati toate campurile!";
         }

@@ -34,10 +34,11 @@
 </div>
 <div class="container">
     <div class="item clona">
-        <span class="tip_imobil">Tip Imobil</span>
-        <span class="pret">Pret</span>
-        <span class="cartier">Cartier</span>
-        <span class="data_inregistrare">Data inregistrare</span>
+        <a href='/imobil/view/' class='link_imobil'>
+            <span class="tip_imobil">Tip Imobil</span>
+            <span class="pret">Pret</span>
+            <span class="cartier">Cartier</span>
+            <span class="data_inregistrare">Data inregistrare</span></a>
     </div>
 </div>
 <?php @include_once APP_PATH.'view/snippets/footer.tpl.php'; ?>

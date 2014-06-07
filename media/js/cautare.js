@@ -84,7 +84,7 @@ jQuery(document).ready(function(){
                     }
                 });
             });
-    
+   
     search();
     
 });
@@ -111,6 +111,8 @@ function search(clear_screen){
                jQuery(clona).find('span').each(function(span,v){
                   jQuery(v).text(imobil[jQuery(v).attr('class')]);
                });
+               
+               clona.find('.link_imobil').attr('href',clona.find('.link_imobil').attr('href')+imobil['idi']);
                
                clona.removeClass('clona');
                jQuery('.container').append(clona);

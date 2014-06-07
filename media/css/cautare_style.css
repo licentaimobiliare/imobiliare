@@ -46,3 +46,8 @@ ul.ui-autocomplete.ui-menu{
 ul.ui-autocomplete.ui-menu li:hover{
     color:blue;
 }
+
+.link_imobil{
+    text-decoration: none;
+    color: #939393 !important;
+}
