@@ -84,8 +84,8 @@ class model_imobil{
             //select detalis
             $stmt = $connection -> prepare ('select finisaj,tip_constructie,'
                 . 'tip_locuinta,tip_imobil from finisaje,tip_constructii,'
-                . 'tip_locuinte,tip_imobil where idf = ? or tip_constructii.idtc = ? or '
-                . 'idtl = ? or idti = ?');
+                . 'tip_locuinte,tip_imobil where idf = ? and tip_constructii.idtc = ? and '
+                . 'idtl = ? and idti = ?');
             $stmt->execute(array($results -> idf , $results -> idt_constructie,
                 $results -> idtl , $results -> idti));
             $detalii = $stmt -> fetch();

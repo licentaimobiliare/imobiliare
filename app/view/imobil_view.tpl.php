@@ -25,7 +25,7 @@ window.idi=<?php echo $imobil->idi;?></script>
                     <p><span>Data inregistrarii: </span><?php echo $imobil->data_inregistrare;?></p>
                 </div>
                 <?php global $user;
-                if ($user->tip == 'administrator') {
+                if (in_array($user->tip,array('administrator','angajat'))) {
                     ?>
                 <form method="POST" action="" enctype="multipart/form-data">
                     Poze imobil:<input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
