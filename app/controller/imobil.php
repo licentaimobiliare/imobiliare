@@ -72,10 +72,10 @@ class controller_imobil {
             $pictures=array();
             foreach ($_FILES['filesToUpload']['tmp_name'] as $file) {
 
-                if(!file_exists(dirname(APP_PATH).'/media/images/'.$params[0]))
-                    mkdir(dirname(APP_PATH).'/media/images/'.$params[0],0777,true);
+                if(!file_exists(dirname(APP_PATH).'/media/images/imobil_pictures/'.$params[0]))
+                    mkdir(dirname(APP_PATH).'/media/images/imobil_pictures/'.$params[0],0777,true);
                 $image='picture_'.uniqid().'.png';
-                if(move_uploaded_file($file, dirname(APP_PATH).'/media/images/'.$params[0].'/'.$image)){
+                if(move_uploaded_file($file, dirname(APP_PATH).'/media/images/imobil_pictures/'.$params[0].'/'.$image)){
                     $pictures[]=array('idi' => $params[0],'image' => $image);
                 }
             }

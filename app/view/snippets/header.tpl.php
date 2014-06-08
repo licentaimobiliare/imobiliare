@@ -80,7 +80,7 @@
                                         <li><img src="<?php echo $config['domain']; ?>/media/images/slider-3.jpg" alt=""></li>
                                         <?php } else{
                                             foreach($change_items as $item){?>
-                                            <li><img src="<?php echo $config['domain']; ?>/media/images/<?php echo $item;?>" alt=""></li>
+                                            <li><img src="<?php echo $config['domain']; ?>/media/images/imobil_pictures/<?php echo $item;?>" alt=""></li>
                                             <?php }} ?>
                                     </ul>
                                 </div>
