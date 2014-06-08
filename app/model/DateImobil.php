@@ -203,24 +203,6 @@ class model_DateImobil{
         }
     }
     
-    public static function adaugauser($user){
-    $keys=array();$values=array();
-        foreach($user as $key => $value){
-                $keys[]=$key;
-                $values[]=$value;
-            }
-     
-        $connection= model_database::get_instance();
-        
-         $stmt =$connection->prepare('insert into users('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
-         try{
-            $stmt->execute($values);
-            return $connection->lastInsertId();
-        }
-        catch(Exception $e){
-            return false;
-        }
-    }
     
     public static function adauganumar($numar){
     $keys=array();$values=array();
@@ -417,29 +399,6 @@ class model_DateImobil{
         return $results;
    }
    
-   public static function usersGetById($id)
-    {    
-    $connection= model_database::get_instance();
-        if(is_array($id))
-        {
-             $stmt = $connection->prepare('select * from users                                
-                                        where iduser in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
-                . 'order by FIELD(iduser ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
-             $orderid= array_merge_recursive($id,$id);
-             //var_dump($orderid);
-            $stmt ->execute($orderid);
-            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
-            
-        }
-        else
-        {      
-        $stmt = $connection -> prepare('Select * from users where iduser = ?');
-        $stmt-> execute(array($id));
-        $results = $stmt ->fetchObject();
-        }
-        return $results;
-   }
-   
    public static function markersGetById($id)
     {    
     $connection= model_database::get_instance();
@@ -616,19 +575,6 @@ class model_DateImobil{
         }  
    }
    
-   public static function deleteusers($id)
-   {   
-         $connection= model_database::get_instance();
-        
-         $stmt =$connection->prepare("delete from users where iduser= $id");           
-         try{
-            $stmt->execute(array($id));         
-            return true;
-        } 
-        catch(Exception $e){  
-            return false;
-        }  
-   }
    
    public static function deletemarkers($id)
    {   
@@ -794,24 +740,7 @@ class model_DateImobil{
        return $results;
    }
    
-   public static function usersGetByName($name)
-   {       
-       $connection= model_database::get_instance();
-       $stmt = $connection -> prepare("Select * from users where nume_user=?" );       
-       $stmt-> execute(array($name));
-       $results = $stmt ->fetchObject(); 
-       return $results;      
-   }
-   
-    public static function usersListName($name)
-   {
-       $connection= model_database::get_instance();
-       $stmt = $connection -> prepare("Select * from users where nume_user like ?" );     
-       $stmt-> execute(array($name.'%'));
-        $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
-       return $results;
-   }
-   
+    
    public static function markersGetByName($name)
    {       
        $connection= model_database::get_instance();
@@ -950,22 +879,7 @@ class model_DateImobil{
          return $object;
    }
    
-    public static function updateusers($a)
-   {         
-         $connection= model_database::get_instance();
-         $stmt =$connection->prepare("update users set nume_user=?,parola=?,mentiuni=?,telefon=?,email=?,tip=? where iduser=?");    
-         $stmt->execute(array($a['nume_user'],$a['parola'],$a['mentiuni'],$a['telefon'],$a['email'],$a['tip'],$a['iduser']));
-         $object = new stdClass();
-         $object->nume_user = $a['nume_user'] ;
-         $object->parola = $a['parola'] ;
-         $object-> mentiuni= $a['mentiuni'] ;
-         $object->telefon = $a['telefon'] ;
-         $object->email = $a['email'] ;
-         $object->tip = $a['tip'] ;
-         $object->iduser = $a['iduser'] ;  
-         return $object;
-   }
-   
+    
    public static function updateproprietar($a)
    {         
          $connection= model_database::get_instance();

@@ -10,8 +10,8 @@ class controller_login {
                     $sec = controller_helper::login();
                     if ($sec == 1)
                     {
-                        $_SESSION['txtuser']=$_POST['txtuser'];
-                        $_SESSION['txtpass']=$_POST['txtpass'];
+                        //$_SESSION['txtuser']=$_POST['txtuser'];
+                        //$_SESSION['txtpass']=$_POST['txtpass'];
                         global $user;
                         $_SESSION['user']=$user;
                     }

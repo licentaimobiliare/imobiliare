@@ -56,8 +56,9 @@
                 <div class="social-icons">
 
                     <?php
-                    if (isset($_SESSION['txtuser']) && $_SESSION['txtuser'] != "") {
-                        echo 'Te-ai autentificat ca <b>' . $_SESSION['txtuser'] . '</b>';
+                    global $user;
+                    if (isset($user->nume_user) && $user->nume_user != "") {
+                        echo 'Te-ai autentificat ca <b>' . $user->nume_user . '</b>';
                         ?>
                         <form action="/index.php/logout/index" method="post" >
                             <input type="submit" name="logout" size="8" value="Log-out"/>
@@ -91,7 +92,9 @@
                                     <li><a href="/index.php/cautare/index">Cautare</a></li>
                                     <li><a href="harta.php">Harta</a></li>
                                     <li><a href="comerciale.php">Comerciale</a></li>
+                                    <?php if (empty($user)){ ?>
                                     <li><a href="/index.php/login/index">Acces</a></li>
+                                    <?php } ?>
                                     <li><a href="/index.php/reclamatii/index">Reclamatii</a></li>
                                 </ul>
                             </nav>
