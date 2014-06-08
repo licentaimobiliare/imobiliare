@@ -36,6 +36,7 @@
     <input type="date" data-type="date" placeholder="Data constructiei" name="imobil[date][data_constructie]" class="hidden"/>
     <input type="number" data-type="date" name="imobil[date][nr_camere][]" class="nr_camere hidden" />
     <input type="text" data-type="date" placeholder="Tip camera" name="imobil[date][tip_camera][]" class="tip_camera hidden"/>
+    <input type="file" data-type="date" name="imobil[date][avatar]" class="hidden" />
     <button id="adauga_camera" class="hidden">Adauga</button>
     <button id="imobil_back" class="hidden">Back</button>
     <button id="submit">Submit</button>

@@ -5,6 +5,10 @@
 class controller_login {
 
 	function action_index($params) {
+        
+        if(!empty($_GLOBALS['user'])){
+            echo "GO TO USER PROFILE";die;
+        }
            if ($_POST['type'] == 1)
                 {
                     $sec = controller_helper::login();

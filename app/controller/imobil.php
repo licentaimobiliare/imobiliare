@@ -30,6 +30,15 @@ class controller_imobil {
                                         'tip_camera' => $_POST['imobil']['date']['tip_camera'][$i]);
                 }
                 
+                if($_FILES['imobil']['tmp_name'] != ''){
+                    $avatar='avatar_'.date().'_'.uniqid().'.jpg';
+                    $file=$_FILES['imobil']['tmp_name']['date']['avatar'];
+                }
+                else {
+                    $avatar='imobil_default.jpg';
+                    $file=dirname(APP_PATH).'/media/images/'.$avatar;
+                }
+                
                 $imobil= array(
                     'idf' => $finisaj -> idf,
                     'idt_constructie' =>$tip_constructie -> idtc,
@@ -40,6 +49,7 @@ class controller_imobil {
                     'mp' => $_POST['imobil']['date']['mp'],
                     'descriere' => $_POST['imobil']['date']['descriere'],
                     'data_constructie' => $_POST['imobil']['date']['data_constructie'],
+                    'avatar' => $avatar,
                     'adresa' => array(
                         'idcp' => $cod_postal->idcp,
                         'ids' => $nume_strada->ids,
@@ -57,8 +67,12 @@ class controller_imobil {
                 
                 $idi = model_imobil::addImobil($imobil);
                 
-                $imobil = model_imobil::getById($idi);
-                header('Location: '.$config['domain'].'/imobil/view/'.$imobil->idi);
+                if(!file_exists(dirname(APP_PATH).'/media/images/imobil_pictures/'.$idi.'/avatar'))
+                    mkdir(dirname(APP_PATH).'/media/images/imobil_pictures/'.$idi.'/avatar',0777,true);
+                move_uploaded_file($file, dirname(APP_PATH).'/media/images/imobil_pictures/'.$idi.'/avatar/'.$avatar);
+                    
+//                $imobil = model_imobil::getById($idi);
+                header('Location: '.$config['domain'].'/imobil/view/'.$idi);
             }
             else $message = "Validati toate campurile!";
         }
