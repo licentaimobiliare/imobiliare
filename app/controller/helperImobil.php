@@ -53,4 +53,12 @@ class controller_helperImobil {
         $result;
     }
 
+    public static function getCartiere(){
+        $connection = model_database::get_instance();
+        
+        $stmt = $connection->prepare("select distinct(cartier) from imobil");
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
 }

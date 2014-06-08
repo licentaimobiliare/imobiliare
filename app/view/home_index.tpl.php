@@ -67,16 +67,11 @@
           <h2 class="p3">Gaseste-ti un birou</h2>
           <img src="media/images/page1-img4.png" alt="">
           <div class="lists">
+              <?php  foreach(controller_helperImobil::getCartiere() as $cartier){ ?>
             <ul class="list-1">
-              <li><a href="#">Gheorgheni</a></li>
-              <li><a href="#">Grigorescu</a></li>
-			  <li><a href="#">Manastur</a></li>
+              <li><a href="/cautare/index?cartier=<?php echo $cartier['cartier'];?>"><?php echo $cartier['cartier'];?></a></li>
             </ul>
-            <ul class="list-1 last">
-              <li><a href="#">Marasti</a></li>
-			  <li><a href="#">Someseni</a></li>
-              <li><a href="#">Zorilor</a></li>
-            </ul>
+              <?php } ?>
           </div>
         </div>
       </div>

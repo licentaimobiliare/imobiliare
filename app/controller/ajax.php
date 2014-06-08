@@ -37,7 +37,9 @@ class controller_ajax{
             $query .= 'idti='.$filter['idti'].' and ';
         if(isset($filter['idp']) && strlen($filter['idp']) < 14)
             $query .= "idp like '".$filter['idp']."%' and ";
-        
+        if(isset($filter['cartier']))
+            $query .= "cartier like '".$filter['cartier']."%' and ";
+            
         $query.='i.idi is not null order by ';
         
         $query.='data_constructie '.(isset($filter['data_constructie']) && $filter['data_constructie']== 'crescator' ? 'asc,' : 'desc,');

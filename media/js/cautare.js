@@ -20,6 +20,11 @@ jQuery(document).ready(function(){
     });
     
     window._filter={page: 1};
+    var pairs = location.search.slice(1).split('&');
+    pairs.every(function(par){
+       par=par.split('=');
+       window._filter[par[0]]= decodeURIComponent(par[1] || '');
+    });
     
     jQuery('input[type="radio"]').on('change',function(){
        window._filter["data_"+jQuery(this).attr('name')]=jQuery(this).val();
