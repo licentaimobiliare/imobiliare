@@ -22,7 +22,7 @@
                                 </tr>
                                 <tr>
                                     <td>Parola</td>
-                                    <td><input name="txtpass" type="text" id="mypassword"></td>
+                                    <td><input name="txtpass" type="password" id="mypassword"></td>
                                 </tr>
                                 <tr>
                                     <td><br><input type="submit" name="submit" value="Logare"></td>
