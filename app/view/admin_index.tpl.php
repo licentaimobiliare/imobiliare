@@ -8,23 +8,17 @@
         <div id="m1"
             onmouseover="mcancelclosetime()"
             onmouseout="mclosetime()">
-        <a href="http://imobiliare.com/imobil/adaugare">Imobil</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/DateImobil">Date imobil</a>
-         <a href="http://imobiliare.com/AdminDateImobil/adaugare/Camere">Camere</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Relatie">Relatie imobil</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Proprietar">Proprietar</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/finisaj">Finisaj</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/TipConstructie">Tip constructii</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/TipLocuinta">Tip locuinte</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/TipImobil">Tip imobil</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/TipStrada">Tip strazi</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Numar">Numar</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/CodPostal">Coduri postale</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Markers">Harta</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/TipServiciu">Servicii</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Strazi">Strazi</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Tranzactii">Tranzactii</a>
-        <a href="http://imobiliare.com/AdminDateImobil/adaugare/Client">Clienti</a> 
+        <a href="../imobil/adaugare">Imobil</a>
+        <a href="../AdminDateImobil/adaugare/finisaj">Finisaj</a>
+        <a href="../AdminDateImobil/adaugare/TipConstructie">Tip constructii</a>
+        <a href="../AdminDateImobil/adaugare/TipLocuinta">Tip locuinte</a>
+        <a href="../AdminDateImobil/adaugare/TipImobil">Tip imobil</a>
+        <a href="../AdminDateImobil/adaugare/TipStrada">Tip strazi</a>
+        <a href="../AdminDateImobil/adaugare/Numar">Numar</a>
+        <a href="../AdminDateImobil/adaugare/CodPostal">Coduri postale</a>
+        <a href="../AdminDateImobil/adaugare/Markers">Harta</a>
+        <a href="../AdminDateImobil/adaugare/TipServiciu">Servicii</a>
+        <a href="../AdminDateImobil/adaugare/Strazi">Strazi</a>
         </div>
     </li>
     <li><a href="#"
