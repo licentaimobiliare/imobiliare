@@ -188,6 +188,7 @@ class controller_AdminDateImobil {
                 $date=  model_DateImobil::FinisajListName("%");
                 foreach ($date as $data){
                     $data->view_name=$data->finisaj;
+                    $data->view_id=$data->idf;
                 }
                 break;
         }
