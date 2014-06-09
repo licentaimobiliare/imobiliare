@@ -23,39 +23,11 @@
     </li>
     <li><a href="#"
         onmouseover="mopen('m2')"
-        onmouseout="mclosetime()">Editare</a>
+        onmouseout="mclosetime()">Actualizare</a>
         <div id="m2"
             onmouseover="mcancelclosetime()"
             onmouseout="mclosetime()">
         <a href="#">Imobil</a>
-        <a href="#">Date imobil</a>
-         <a href="#">Camere</a>
-        <a href="#">Relatie imobil</a>
-        <a href="#">Proprietar</a>
-        <a href="#">Finisaj</a>
-        <a href="#">Tip constructii</a>
-        <a href="#">Tip locuinte</a>
-         <a href="#">Tip imobil</a>
-        <a href="#">Tip strazi</a>
-        <a href="#">Numar</a>
-        <a href="#">Coduri postale</a>
-        <a href="#">Harta</a>
-        <a href="#">Servicii</a>
-        <a href="#">Strazi</a>
-        <a href="#">Tranzactii</a>
-        <a href="#">Clienti</a> 
-        </div>
-    </li>
-     <li><a href="#"
-        onmouseover="mopen('m3')"
-        onmouseout="mclosetime()">Stergere</a>
-        <div id="m3"
-            onmouseover="mcancelclosetime()"
-            onmouseout="mclosetime()">
-        <a href="#">Imobil</a>
-        <a href="#">Date imobil</a>
-         <a href="#">Camere</a>
-        <a href="#">Relatie imobil</a>
         <a href="#">Proprietar</a>
         <a href="#">Finisaj</a>
         <a href="#">Tip constructii</a>
@@ -67,19 +39,28 @@
         <a href="#">Harta</a>
         <a href="#">Servicii</a>
         <a href="#">Strazi</a>
-        <a href="#">Tranzactii</a>
         <a href="#">Clienti</a> 
         </div>
     </li>
-    <li><li><a href="#"
-        onmouseover="mopen('m4')"
+     <li><a href="#"
+        onmouseover="mopen('m3')"
         onmouseout="mclosetime()">Gestiune utilizatori</a>
-        <div id="m4"
+        <div id="m3"
             onmouseover="mcancelclosetime()"
             onmouseout="mclosetime()">
           <a href="#">Adauga utilizator</a>     
           <a href="#">Sterge utilizator</a>
           <a href="#">Editeaza utilizator</a>
+        </div>
+    </li>
+    <li><li><a href="#"
+        onmouseover="mopen('m4')"
+        onmouseout="mclosetime()">History</a>
+        <div id="m4"
+            onmouseover="mcancelclosetime()"
+            onmouseout="mclosetime()">
+          <a href="#">Vizualizare history</a>     
+          
         </div></li>
     
 </ul>
