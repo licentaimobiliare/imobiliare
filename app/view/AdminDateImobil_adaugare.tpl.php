@@ -7,7 +7,8 @@
         ?>
         <p> Adauga un nou tip de finisaj </p><br>
         <form method="POST" action="">
-            <input type="text" name="txtfinisaj" placeholder="Nume finisaj">
+            <input type="text" name="txtfinisaj" placeholder="Nume finisaj"
+                   <?php if(!empty($finisaj)) echo 'value="'.$finisaj->finisaj.'"'?>>
             <input type="submit" name="adauga_finisaj" value="Adauga">
         </form> 
         <?php
