@@ -63,6 +63,12 @@
                         <form action="/index.php/logout/index" method="post" >
                             <input type="submit" name="logout" size="8" value="Log-out"/>
                         </form>
+                    
+                    
+                    <form action="/index.php/admin/index" method="post" >
+                            <input type="submit" name="Administrator" size="8" value="Administrator"/>
+                    </form>
+                    
     <?php
 } else {
     echo 'Nu esti autentificat.Te rog logheaza-te!';

@@ -244,7 +244,7 @@ class model_DateImobil{
     
     public static function adaugamarkers($marker){
     $keys=array();$values=array();
-        foreach($markers as $key => $value){
+        foreach($marker as $key => $value){
                 $keys[]=$key;
                 $values[]=$value;
             }
