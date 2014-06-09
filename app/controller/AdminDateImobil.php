@@ -181,4 +181,18 @@ class controller_AdminDateImobil {
             
            @include_once APP_PATH . 'view/AdminDateImobil_adaugare.tpl.php';
         }
+        
+    function action_lista($params){
+        switch ($params[0]){
+            case "finisaj":
+                $date=  model_DateImobil::FinisajListName("%");
+                foreach ($date as $data){
+                    $data->view_name=$data->finisaj;
+                }
+                break;
+        }
+        
+        @include_once APP_PATH . 'view/AdminDateImobil_lista.tpl.php';
+        
+    }
 }
