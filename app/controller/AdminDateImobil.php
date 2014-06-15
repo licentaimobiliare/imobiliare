@@ -131,14 +131,163 @@ class controller_AdminDateImobil {
             if($_POST){
                 switch($params[0]){
                     case "finisaj":
-                        //aici faci updatu al finisaj
+                        $rezultat = model_DateImobil :: updatefinisaj($params[1]);
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
                         break;
+                        
+                    case "TipConstructie":
+                        $rezultat = model_DateImobil :: updatetc($params[1]);
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "TipLocuinta":
+                        $rezultat = model_DateImobil :: updatetl(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "TipImobil":
+                        $rezultat = model_DateImobil :: updateti(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "TipStrada":
+                        $rezultat = model_DateImobil :: updatets(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "TipServiciu":
+                        $rezultat = model_DateImobil :: updatets(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                  
+                    case "Client":
+                        $rezultat = model_DateImobil :: updateclienti(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "Proprietar":
+                        $rezultat = model_DateImobil :: updateproprietar(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "CodPostal":
+                        $rezultat = model_DateImobil :: updatecp(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "Numar":
+                        $rezultat = model_DateImobil :: updatenumar(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "Markers":
+                        $rezultat = model_DateImobil :: updatemarkers(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                        
+                    case "Strazi":
+                        $rezultat = model_DateImobil :: updatestrazi(array($params[1]));
+                        if ($rezultat !== FALSE) {
+                                 echo 'S-a inserat cu succes in baza de date';
+                         } else {
+                                  echo 'Inserare esuata!Te rog incearca din nou cu mai multa atentie!';
+                         }
+                        break;
+                     
                 }
             }
             else{
                 switch($params[0]){
                     case "finisaj":
                         $finisaj=  model_DateImobil::FinisajGetById($params[1]);
+                        break;
+                    
+                    case "TipConstructie":
+                        $tc=  model_DateImobil::tcGetById($params[1]);
+                        break;
+                    
+                    case "TipLocuinta":
+                        $TipLocuinta=  model_DateImobil::tlGetById($params[1]);
+                        break;
+                    
+                    case "TipImobil":
+                        $tipImobil=  model_DateImobil::tiGetById($params[1]);
+                        break;
+                    
+                   case "TipStrada":
+                        $Tipstrada=  model_DateImobil::tsGetById($params[1]);
+                        break;
+                    
+                   case "TipServiciu":
+                        $TipServiciu=  model_DateImobil::serviciiGetById($params[1]);
+                        break; 
+                    
+                  case "Client":
+                        $Client=  model_DateImobil::clientiGetById($params[1]);
+                        break;
+                    
+                  case "Proprietar":
+                        $Proprietar=  model_DateImobil::proprietariGetById($params[1]);
+                        break;
+                    
+                  case "CodPostal":
+                        $CodPostal=  model_DateImobil::cpGetById($params[1]);
+                        break;
+                    
+                  case "Numar":
+                        $Numar=  model_DateImobil::numarGetById($params[1]);
+                        break;
+                    
+                 case "Markers":
+                        $Markers=  model_DateImobil::markersGetById($params[1]);
+                        break;
+                    
+                 case "Strazi":
+                        $Strazi=  model_DateImobil::StraziGetById($params[1]);
                         break;
                 }
             }
@@ -149,12 +298,126 @@ class controller_AdminDateImobil {
     function action_lista($params) {
         switch ($params[0]) {
             case "finisaj":
+                if(!empty($params[1]))
+                    model_DateImobil::deletefinisaj($params[1]);
+                
                 $date = model_DateImobil::FinisajListName("%");
                 foreach ($date as $data) {
                     $data->view_name = $data->finisaj;
                     $data->view_id = $data->idf;
                 }
                 break;
+            
+            case "TipConstructie":
+                if(!empty($params[1]))
+                    model_DateImobil::deletetc($params[1]);
+                
+               $date = model_DateImobil::tcListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->tip_constructie;
+                    $data->view_id = $data->idtc;
+                }
+                break; 
+            
+            case "TipLocuinta":
+                if(!empty($params[1]))
+                    model_DateImobil::deletetl($params[1]);
+                
+               $date = model_DateImobil::tlListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->tip_locuinta;
+                    $data->view_id = $data->idtl;
+                }
+                break; 
+                
+            case "TipImobil":
+                if(!empty($params[1]))
+                    model_DateImobil::deleteti($params[1]);
+                
+               $date = model_DateImobil::tiListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->tip_imobil;
+                    $data->view_id = $data->idti;
+                }
+                break; 
+                
+           case "TipStrada":
+               if(!empty($params[1]))
+                    model_DateImobil::deletets($params[1]);
+               
+               $date = model_DateImobil::tsListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->tip_strada;
+                    $data->view_id = $data->idts;
+                }
+                break; 
+                
+           case "TipServiciu":
+               if(!empty($params[1]))
+                    model_DateImobil::deleteservicii($params[1]);
+               
+               $date = model_DateImobil::serviciiListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->serviciu;
+                    $data->view_id = $data->ids;
+                }
+                break; 
+                
+          case "Client":
+              if(!empty($params[1]))
+                    model_DateImobil::deleteclienti($params[1]);
+              
+               $date = model_DateImobil::clientiListName("%");
+                foreach ($date as $data) {
+                    $data->view_name =$data->cnp.$data->nume;
+                    $data->view_id = $data->cnp;
+                }
+                break; 
+                
+          case "Proprietar":
+              if(!empty($params[1]))
+                    model_DateImobil::deleteproprietari($params[1]);
+              
+               $date = model_DateImobil::proprietariListName("%");
+                foreach ($date as $data) {
+                    $data->view_name =$data->cnp.$data->nume;
+                    $data->view_id = $data->cnp;
+                }
+                break;
+                
+         case "CodPostal":
+             if(!empty($params[1]))
+                    model_DateImobil::deletecp($params[1]);
+             
+               $date = model_DateImobil::cpListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->cod_postal;
+                    $data->view_id = $data->idcp;
+                }
+                break; 
+                
+         case "Numar":
+             if(!empty($params[1]))
+                    model_DateImobil::deletenumar($params[1]);
+             
+               $date = model_DateImobil::numarListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->numar;
+                    $data->view_id = $data->idn;
+                }
+                break; 
+                
+         case "Markers":
+             if(!empty($params[1]))
+                    model_DateImobil::deletemarkers($params[1]);
+             
+               $date = model_DateImobil::markersListName("%");
+                foreach ($date as $data) {
+                    $data->view_name = $data->name;
+                    $data->view_id = $data->id;
+                }
+                break;
+         
         }
 
         @include_once APP_PATH . 'view/AdminDateImobil_lista.tpl.php';

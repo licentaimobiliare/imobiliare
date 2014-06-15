@@ -1,0 +1,11 @@
+#lista_items p{
+    cursor: pointer;
+    
+}
+#lista_items p.selected{
+    background-color: red;
+}
+#a{
+   
+}
+
