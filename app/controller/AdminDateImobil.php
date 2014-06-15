@@ -131,7 +131,7 @@ class controller_AdminDateImobil {
             if($_POST){
                 switch($params[0]){
                     case "finisaj":
-                        $rezultat = model_DateImobil :: updatefinisaj($params[1]);
+                        $rezultat = model_DateImobil :: updatefinisaj(array('finisaj'=>$_POST['txtfinisaj'], 'idf'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -140,7 +140,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "TipConstructie":
-                        $rezultat = model_DateImobil :: updatetc($params[1]);
+                        $rezultat = model_DateImobil :: updatetc(array('tip_constructie'=>$_POST['txttc'], 'idtc'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -149,7 +149,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "TipLocuinta":
-                        $rezultat = model_DateImobil :: updatetl(array($params[1]));
+                        $rezultat = model_DateImobil :: updatetl(array('tip_locuinta'=>$_POST['txttl'], 'idtl'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -158,7 +158,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "TipImobil":
-                        $rezultat = model_DateImobil :: updateti(array($params[1]));
+                        $rezultat = model_DateImobil :: updateti(array('tip_imobil'=>$_POST['txtti'], 'idti'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -167,7 +167,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "TipStrada":
-                        $rezultat = model_DateImobil :: updatets(array($params[1]));
+                        $rezultat = model_DateImobil :: updatets(array('tip_strada'=>$_POST['txtts'], 'idts'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -176,7 +176,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "TipServiciu":
-                        $rezultat = model_DateImobil :: updatets(array($params[1]));
+                        $rezultat = model_DateImobil :: updateservicii(array('serviciu'=>$_POST['txtserviciu'], 'ids'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -185,7 +185,7 @@ class controller_AdminDateImobil {
                         break;
                   
                     case "Client":
-                        $rezultat = model_DateImobil :: updateclienti(array($params[1]));
+                        $rezultat = model_DateImobil :: updateclienti(array('nume'=>$_POST['txtnume'], 'prenume'=>$_POST['txtprenume'], 'telefon'=>$_POST['txttelefon'], 'cnp'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -203,7 +203,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "CodPostal":
-                        $rezultat = model_DateImobil :: updatecp(array($params[1]));
+                        $rezultat = model_DateImobil :: updatecp(array('cod_postal'=>$_POST['txtcd'], 'idcp'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -212,7 +212,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "Numar":
-                        $rezultat = model_DateImobil :: updatenumar(array($params[1]));
+                        $rezultat = model_DateImobil :: updatenumar(array('numar'=>$_POST['txtnr'], 'idn'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -221,7 +221,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "Markers":
-                        $rezultat = model_DateImobil :: updatemarkers(array($params[1]));
+                        $rezultat = model_DateImobil :: updatemarkers(array('name'=>$_POST['txtname'], 'address'=>$_POST['txtadress'], 'lat'=>$_POST['txtlat'], 'lng'=>$_POST['txtlng'], 'type'=>$_POST['txttype'], 'id'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -230,7 +230,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "Strazi":
-                        $rezultat = model_DateImobil :: updatestrazi(array($params[1]));
+                        $rezultat = model_DateImobil :: updatestrazi(array('nume'=>$_POST['txtnume'], 'idts'=>$_POST['txtts'], 'ids'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
@@ -255,11 +255,11 @@ class controller_AdminDateImobil {
                         break;
                     
                     case "TipImobil":
-                        $tipImobil=  model_DateImobil::tiGetById($params[1]);
+                        $TipImobil=  model_DateImobil::tiGetById($params[1]);
                         break;
                     
                    case "TipStrada":
-                        $Tipstrada=  model_DateImobil::tsGetById($params[1]);
+                        $TipStrada=  model_DateImobil::tsGetById($params[1]);
                         break;
                     
                    case "TipServiciu":
