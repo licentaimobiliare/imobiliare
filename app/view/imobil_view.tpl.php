@@ -33,6 +33,9 @@ window.idi=<?php echo $imobil->idi;?></script>
                 </form>
                 <button onclick="window.location.href=window.location.origin+'/imobil/tranzactie/<?php echo $imobil->idi ?>'">
                     Tranzactie</button>
+                <form method="POST" action="">
+                    <button name="track" value="track">Track</button>
+                </form>
                 <?php } ?>
             </div>
             <div class="grid_4">

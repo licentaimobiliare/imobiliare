@@ -90,6 +90,9 @@ class controller_imobil {
         }
         global $user;
         
+        if(!empty($_POST['track']))
+            controller_helper::track_user ($user, $params[0], TEREN_TRACK);
+        
         //track this imobil
         $user_ip=  controller_helper::getClientIP();
         $track_ip = model_imobil::getIpTracked($user_ip,$params[0]);
