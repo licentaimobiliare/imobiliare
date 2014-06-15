@@ -24,7 +24,7 @@ window.idi=<?php echo $imobil->idi;?></script>
                     <p class="first"><span>Finisaj: </span><?php echo $imobil->finisaj;?></p>
                     <p><span>Data inregistrarii: </span><?php echo $imobil->data_inregistrare;?></p>
                 </div>
-                <?php global $user;
+                <?php 
                 if (in_array($user->tip,array('administrator','angajat'))) {
                     ?>
                 <form method="POST" action="" enctype="multipart/form-data">

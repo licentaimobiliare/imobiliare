@@ -88,6 +88,27 @@ class controller_imobil {
         foreach($items as $item){
             $change_items[]=$params[0].'/'.$item->image;
         }
+        global $user;
+        
+        //track this imobil
+        $user_ip=  controller_helper::getClientIP();
+        $track_ip = model_imobil::getIpTracked($user_ip,$params[0]);
+        if (empty($track_ip)) {
+            
+            controller_helper::track_user($user, $params[0],SITE_TRACK);
+            model_imobil::ip_track($user_ip,$params[0]);
+        }
+        else{
+            $format = "Y-m-d h:m:s";
+            $date1  = new DateTime($track_ip->expiration);
+            $date2  = new DateTime();
+            if($date2>=$date1){
+                model_imobil::ip_remove_track($user_ip,$params[0]);
+                controller_helper::track_user($user, $params[0], SITE_TRACK);
+                model_imobil::ip_track($user_ip,$params[0]);
+            }
+        }
+        
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     
