@@ -24,7 +24,7 @@ window.idi=<?php echo $imobil->idi;?></script>
                     <p class="first"><span>Finisaj: </span><?php echo $imobil->finisaj;?></p>
                     <p><span>Data inregistrarii: </span><?php echo $imobil->data_inregistrare;?></p>
                 </div>
-                <?php global $user;
+                <?php 
                 if (in_array($user->tip,array('administrator','angajat'))) {
                     ?>
                 <form method="POST" action="" enctype="multipart/form-data">
@@ -33,6 +33,9 @@ window.idi=<?php echo $imobil->idi;?></script>
                 </form>
                 <button onclick="window.location.href=window.location.origin+'/imobil/tranzactie/<?php echo $imobil->idi ?>'">
                     Tranzactie</button>
+                <form method="POST" action="">
+                    <button name="track" value="track">Track</button>
+                </form>
                 <?php } ?>
             </div>
             <div class="grid_4">
