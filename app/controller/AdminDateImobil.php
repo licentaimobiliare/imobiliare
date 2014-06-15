@@ -194,7 +194,7 @@ class controller_AdminDateImobil {
                         break;
                         
                     case "Proprietar":
-                        $rezultat = model_DateImobil :: updateproprietar(array($params[1]));
+                        $rezultat = model_DateImobil :: updateproprietar(array('nume'=>$_POST['txtnume'], 'strada'=>$_POST['txtstrada'], 'nr'=>$_POST['txtnr'], 'bl'=>$_POST['txtbl'], 'ap'=>$_POST['txtap'], 'txtsc'=>$_POST['txtsc'], 'et'=>$_POST['txtet'], 'oras'=>$_POST['txtoras'], 'judet'=>$_POST['txtjudet'],'cnp'=>$params[1]));
                         if ($rezultat !== FALSE) {
                                  echo 'S-a inserat cu succes in baza de date';
                          } else {
