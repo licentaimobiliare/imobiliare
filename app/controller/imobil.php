@@ -169,5 +169,40 @@ class controller_imobil {
         return true;
     }
     
+    private function getTrackImobile($filter){
+        
+        $idi = model_imobil::getImobilTracks($filter);
+        $idis=array();
+        foreach($idi as $id){
+            $idis[] = $id -> idi;
+        }
+        $imobile = model_imobil::getById($idis);
+        
+        return $imobile;
+    }
+    
+    public function action_comerciale($params){
+        
+        $filter = array(
+            'idtt' => SITE_TRACK,
+            'date' => date('Y-m-d h:i:s',strtotime(' -1 day')),
+            'limit' => array(
+                'start' => 0,
+                'stop' =>5,
+            ),
+        ); 
+        $top_imobile_site_lastday = $this->getTrackImobile($filter);
+        
+        $filter['date'] = date('Y-m-d h:i:s',strtotime(' -1 month'));
+        $top_imobile_site_lastmonth = $this->getTrackImobile($filter);
+        
+        $filter['idtt'] = TEREN_TRACK;
+        $top_imobile_teren_lastmonth = $this->getTrackImobile($filter);
+        
+        $filter['date'] = date('Y-m-d h:i:s',strtotime(' -1 day'));
+        $top_imobile_teren_lastday = $this->getTrackImobile($filter);
+        
+        @include APP_PATH.'view/imobil_comerciale.tpl.php';
+    }
 
 }

@@ -379,13 +379,13 @@ class model_imobil{
         
         $query="select idi,count(idi) as number from imobil_track where "
             .(!empty($filter['idtt']) && is_numeric($filter['idtt']) ? "idtt=".$filter['idtt']." and " : "")
-            .(!empty($filter['date']) ? "DATE(visite_date)"
+            .(!empty($filter['date']) ? "DATE(visit_date)"
                 . (!empty($filter['low_date']) ? "<=" : 
                     (!empty($filter['equal_date']) ? "=" : ">="))
                 . "DATE('".$filter['date']."') and " : "" )
             .(!empty($filter['idi']) && is_numeric($filter['idi']) ? "idi=".$filter['idi']." and " : "" )
             .(!empty($filter['idu']) && is_numeric($filter['idu']) ? "idu=".$filter['idu']." " : "")
-            ." idi is not null group by idi"
+            ." idi is not null group by idi order by number desc "
             .(is_array($filter['limit']) ? "limit ".$filter['limit']['start'].",".$filter['limit']['stop']." " : "");
         
         $stmt= $connection->prepare($query);
