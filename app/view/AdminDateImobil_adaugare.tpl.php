@@ -150,7 +150,7 @@
                  <?php echo (!empty($Markers) ? 'Actualizeaza harta' : 'Adauga un nou imobil pe harta') ?>
                 <form method="POST" action="">
                     <input type="text" name="txtname" placeholder="Nume" <?php if(!empty($Markers)) echo 'value="'.$Markers->name.'"'?>>
-                    <input type="text" name="txtadress" placeholder="Adresa" <?php if(!empty($Markers)) echo 'value="'.$Markers->adress.'"'?>>
+                    <input type="text" name="txtadress" placeholder="Adresa" <?php if(!empty($Markers)) echo 'value="'.$Markers->address.'"'?>>
                     <input type="text" name="txtlat" placeholder="Latitudine" <?php if(!empty($Markers)) echo 'value="'.$Markers->lat.'"'?>>
                     <input type="text" name="txtlng" placeholder="Longitudine" <?php if(!empty($Markers)) echo 'value="'.$Markers->lng.'"'?>>
                     <input type="text" name="txttype" placeholder="Tip" <?php if(!empty($Markers)) echo 'value="'.$Markers->type.'"'?>>
@@ -158,7 +158,16 @@
                            value="<?php echo (!empty($Markers) ? 'Actualizeaza' : 'Adauga') ?>">
                 </form> 
             <?php }   
-             ?>
-                
+             
+                if ($params[0] == 'Strazi') {
+                ?>
+                 <?php echo (!empty($Strazi) ? 'Actualizeaza o strada' : 'Adauga o noua strada') ?>
+                <form method="POST" action="">
+                    <input type="text" name="txtnume" placeholder="Nume strada" <?php if(!empty($Strazi)) echo 'value="'.$Strazi->nume.'"'?>>
+                    <input type="text" placeholder="Tip strada" name="txtts">
+                    <input type="submit" name="adauga_strada" 
+                           value="<?php echo (!empty($Strazi) ? 'Actualizeaza' : 'Adauga') ?>">
+                </form> 
+            <?php } ?>
         
         <?php @include APP_PATH . 'view/snippets/footer.tpl.php'; ?>

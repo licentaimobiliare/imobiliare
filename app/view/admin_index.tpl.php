@@ -33,7 +33,7 @@
         <a href="/AdminDateImobil/lista/TipConstructie">Tip constructii</a>
         <a href="/AdminDateImobil/lista/TipLocuinta">Tip locuinte</a>
         <a href="/AdminDateImobil/lista/TipImobil">Tip imobil</a>
-        <a href="/AdminDateImobil/lista/TipStrazi">Tip strazi</a>
+        <a href="/AdminDateImobil/lista/TipStrada">Tip strazi</a>
         <a href="/AdminDateImobil/lista/Numar">Numar</a>
         <a href="/AdminDateImobil/lista/CodPostal">Coduri postale</a>
         <a href="/AdminDateImobil/lista/Markers">Harta</a>
