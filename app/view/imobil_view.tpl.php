@@ -27,6 +27,29 @@ window.idi=<?php echo $imobil->idi;?></script>
                 <?php 
                 if (in_array($user->tip,array('administrator','angajat'))) {
                     ?>
+                <div class="proprietar">
+                        <h3>Proprietar</h3>
+                        <div class="row">
+                            <p class="first"><span>CNP:</span> <?php echo $imobil->idp; ?></p>
+                            <p><span>Nume: </span><?php echo $imobil->proprietar['nume']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Strada: </span><?php echo $imobil->proprietar['strada']; ?></p>
+                            <p><span>Nr: </span><?php echo $imobil->proprietar['nr']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Bl: </span><?php echo $imobil->proprietar['bl']; ?></p>
+                            <p><span>Ap: </span><?php echo $imobil->proprietar['ap']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Sc: </span><?php echo $imobil->proprietar['sc']; ?></p>
+                            <p><span>Et: </span><?php echo $imobil->proprietar['et']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Oras: </span><?php echo $imobil->proprietar['oras']; ?></p>
+                            <p><span>Judet: </span><?php echo $imobil->proprietar['judet']; ?></p>
+                        </div>
+                    </div>
                 <form method="POST" action="" enctype="multipart/form-data">
                     Poze imobil:<input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
                     <button>Adauga</button>
