@@ -63,6 +63,12 @@
                         <form action="/index.php/logout/index" method="post" >
                             <input type="submit" name="logout" size="8" value="Log-out"/>
                         </form>
+                    
+                    
+                    <form action="/index.php/admin/index" method="post" >
+                            <input type="submit" name="Administrator" size="8" value="Administrator"/>
+                    </form>
+                    
     <?php
 } else {
     echo 'Nu esti autentificat.Te rog logheaza-te!';
@@ -88,10 +94,10 @@
                                 <a href="#" class="prev"></a><a href="#" class="next"></a> </div>
                             <nav>
                                 <ul class="menu">
-                                    <li><a href="/index.php">Acasa</a></li>
-                                    <li><a href="/index.php/cautare/index">Cautare</a></li>
+                                    <li><a href="/">Acasa</a></li>
+                                    <li><a href="/cautare/index">Cautare</a></li>
                                     <li><a href="harta.php">Harta</a></li>
-                                    <li><a href="comerciale.php">Comerciale</a></li>
+                                    <li><a href="/imobil/comerciale">Comerciale</a></li>
                                     <?php if (empty($user)){ ?>
                                     <li><a href="/index.php/login/index">Acces</a></li>
                                     <?php } ?>

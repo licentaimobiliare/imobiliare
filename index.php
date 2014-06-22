@@ -17,6 +17,8 @@ define('APP_URL', $config['domain'] . $config['folder']);
 
 // define constant
 define('DEFAULT_PAGER',10);
+define('SITE_TRACK',$config['site_track']);
+define('TEREN_TRACK',$config['teren_track']);
 
 // Setup auto-loader
 spl_autoload_register("auto_loader");
