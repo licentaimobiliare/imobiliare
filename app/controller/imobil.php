@@ -102,6 +102,20 @@ class controller_imobil {
         foreach($items as $item){
             $change_items[]=$params[0].'/'.$item->image;
         }
+        
+        if (!empty($_GET['message']) && $_GET['message'] == 1 )
+        {
+            $message_tranzactie =array("message"=>"Tranzactie reusita!",
+                                       "succes"=>1,
+                                       );
+        }
+        else if ($_GET['message'] === '0')
+        {
+            $message_tranzactie = array("message"=>"Tranzactie esuata!",
+                                        "succes"=>0,
+                                        );
+        }
+//        var_dump($_GET['message'] === '0');die;
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     
@@ -130,8 +144,9 @@ class controller_imobil {
             if(!empty($_POST['tranzactie']['data_final_tranzactie']))
                 $tranzactie['data_final_vanzare']=$_POST['tranzactie']['data_final_tranzactie'];
             
-            model_DateImobil::adaugatranzactii($tranzactie);
-            header('Location: '.$config['domain'].'/imobil/view/'.$params[0]);
+            $rezultat = model_DateImobil::adaugatranzactii($tranzactie);
+            header('Location: '.$config['domain'].'/imobil/view/'.$params[0].'?message='.$rezultat);
+            
         }
         
         $servicii = model_DateImobil::serviciiListName("%");
