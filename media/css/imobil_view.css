@@ -33,3 +33,10 @@
 .proprietar h3{
     text-align: center;
 }
+
+p.error{
+     color: #f00; 
+}
+p.success{
+    color:#00FFFF;
+}
