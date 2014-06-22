@@ -49,7 +49,7 @@ window.idi=<?php echo $imobil->idi;?></script>
                     <?php echo $imobil->descriere;?>
                 </div>
                 <hr />
-                <div>
+                <div class="adresa">
                     <h5>Adresa</h5>
                     <p>
                     <?php $adresa=$imobil->adresa;global $id_tip_imobile_apartament;
