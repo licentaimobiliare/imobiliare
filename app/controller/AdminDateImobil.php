@@ -118,7 +118,7 @@ class controller_AdminDateImobil {
                 $tip_strada = model_DateImobil::tsGetByName($_POST['txtts']);
                 if ($tip_strada != NULL) {
 
-                    $rezultat = model_DateImobil :: adaugastrada(array('nume' => $_POST['txtnume'], 'idts' => $_POST['tip_strada']));
+                    $rezultat = model_DateImobil :: adaugastrada(array('nume' => $_POST['txtnume'], 'idts' => $tip_strada->idts));
                     if ($rezultat !== FALSE) {
                         echo 'S-a inserat cu succes in baza de date';
                     } else {

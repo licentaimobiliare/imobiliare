@@ -35,6 +35,7 @@
 <div class="container">
     <div class="item clona">
         <a href='/imobil/view/' class='link_imobil'>
+            <img class="imobil_avatar" src="<?php echo $config['domain'].'/media/images/imobil_pictures/@idi/avatar/@avatar';?>">
             <span class="tip_imobil">Tip Imobil</span>
             <span class="pret">Pret</span>
             <span class="cartier">Cartier</span>

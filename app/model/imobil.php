@@ -151,7 +151,12 @@ class model_imobil{
                                         inner join finisaje as f on i.idf=f.idf
                                         inner join tip_locuinte as tl on i.idtl=tl.idtl
                                         inner join tip_constructii as tc on i.idt_constructie=tc.idtc
-                                        inner join tip_imobil as ti on i.idti = ti.idti limit '.
+                                        inner join tip_imobil as ti on i.idti = ti.idti limit 
+                                        left join tranzactii as tr on i.idi = tr.idi
+                                        where tr.cnp is null or 
+                                        (tr.cnp is not null and  
+                                        DATE_FORMAT(tr.data_final_vanzare,\'%Y%m%d\')<DATE_FORMAT(now(),\'%Y%m%d\'))
+                                        group by i.idi'.
                 //daca avem pagina luam de la pagna respeciva
                 (isset($_GET['page']) ? $_GET['page']*DEFAULT_PAGER : 0) . ',' . (isset($_GET['page']) ? $_GET['page']*DEFAULT_PAGER + DEFAULT_PAGER : DEFAULT_PAGER));
 
@@ -379,13 +384,13 @@ class model_imobil{
         
         $query="select idi,count(idi) as number from imobil_track where "
             .(!empty($filter['idtt']) && is_numeric($filter['idtt']) ? "idtt=".$filter['idtt']." and " : "")
-            .(!empty($filter['date']) ? "DATE(visite_date)"
+            .(!empty($filter['date']) ? "DATE(visit_date)"
                 . (!empty($filter['low_date']) ? "<=" : 
                     (!empty($filter['equal_date']) ? "=" : ">="))
                 . "DATE('".$filter['date']."') and " : "" )
             .(!empty($filter['idi']) && is_numeric($filter['idi']) ? "idi=".$filter['idi']." and " : "" )
             .(!empty($filter['idu']) && is_numeric($filter['idu']) ? "idu=".$filter['idu']." " : "")
-            ." idi is not null group by idi"
+            ." idi is not null group by idi order by number desc "
             .(is_array($filter['limit']) ? "limit ".$filter['limit']['start'].",".$filter['limit']['stop']." " : "");
         
         $stmt= $connection->prepare($query);

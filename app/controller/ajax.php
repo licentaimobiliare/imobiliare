@@ -24,8 +24,10 @@ class controller_ajax{
             . (isset($filter['ids']) && is_numeric($filter['ids']) ? 
             'and r.ids='.$filter['ids'] : '')
             . (isset($filter['idts']) && is_numeric($filter['idts']) ? 
-            'inner join strazi as s on r.ids=s.ids and idts='.$filter['idts'] : '')
-            . ' where ';
+            ' inner join strazi as s on r.ids=s.ids and idts='.$filter['idts'] : '')
+            .' left join tranzactii as tr on i.idi = tr.idi
+            where (tr.cnp is null or 
+            (tr.cnp is not null and  DATE_FORMAT(tr.data_final_vanzare,\'%Y%m%d\')<DATE_FORMAT(now(),\'%Y%m%d\'))) and ';
         
         if(isset($filter['idf']) && is_numeric($filter['idf']))
             $query .='idf='.$filter['idf'].' and ';
@@ -40,7 +42,7 @@ class controller_ajax{
         if(isset($filter['cartier']))
             $query .= "cartier like '".$filter['cartier']."%' and ";
             
-        $query.='i.idi is not null order by ';
+        $query.='i.idi is not null group by i.idi order by ';
         
         $query.='data_constructie '.(isset($filter['data_constructie']) && $filter['data_constructie']== 'crescator' ? 'asc,' : 'desc,');
         
