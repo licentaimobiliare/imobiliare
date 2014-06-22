@@ -60,10 +60,10 @@ window.idi=<?php echo $imobil->idi;?></script>
                              ' sc. '.$adresa['scara'].' et. '.$adresa['etaj'];
                     ?>
                     </p>
-                      
+                       <div id="googleMap" style="width:300px;height:180px;"></div>
                 </div>    
             </div>
         </div>
 </div>
-  <div id="googleMap" style="width:500px;height:380px;"></div>
+ 
 <?php @include_once APP_PATH.'view/snippets/footer.tpl.php'; ?>

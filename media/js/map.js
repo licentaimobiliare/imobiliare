@@ -1,4 +1,4 @@
-var myCenter=new google.maps.LatLng(46.7667,26.6);
+var myCenter=new google.maps.LatLng(46.7667,23.6);
 var marker;
 
 function initialize()
