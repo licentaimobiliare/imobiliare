@@ -7,6 +7,7 @@ window.idi=<?php echo $imobil->idi;?></script>
 <div class="main">
         <div class="container_12">
             <div class="grid_8">
+                <?php echo (!empty($message_tranzactie) ? '<p class="'.($message_tranzactie['succes']==1 ? "success" : "error").'">'.$message_tranzactie['message'].'</p>' : "") ?>
                 <h4 id="imobil_title"><?php echo $imobil->tip_imobil;?></h4>
                 <div class="row">
                     <p class="first"><span>Metri Patrati: </span> <?php echo $imobil->mp;?></p>

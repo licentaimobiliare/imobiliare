@@ -1,10 +1,11 @@
 .top_imobil{
-    height: 200px !important;
+    height: 350px !important;
     min-height: initial !important;
 }
 
 .top_imobil .item{
-    margin-left: 4%;
-    margin-right: 4%;
+    margin-left: 2%;
+    margin-right: 2%;
+    
 }
 

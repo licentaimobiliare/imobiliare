@@ -24,3 +24,9 @@
     font-size: 20px;
     text-align: center;
 }
+p.error{
+     color: #f00; 
+}
+p.success{
+    color:#00FFFF;
+}

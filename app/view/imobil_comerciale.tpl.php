@@ -8,6 +8,8 @@
         <?php foreach($top_imobile_site_lastday as $item){?>
         <div class="item">
             <a href='/imobil/view/<?php echo $item->idi; ?>' class='link_imobil'>
+                <img class="imobil_avatar" src="<?php echo $config['domain'].(!empty($item->avatar) ? '/media/images/imobil_pictures/'.$item->idi.'/avatar/'.$item->avatar : 
+                    "/media/images/imobil_default.jpg");?>">
                 <span class="tip_imobil"><?php echo $item->tip_imobil; ?></span>
                 <span class="pret"><?php echo $item->pret; ?></span>
                 <span class="cartier"><?php echo $item->cartier; ?></span>
@@ -22,6 +24,8 @@
         <?php foreach($top_imobile_site_lastmonth as $item){?>
         <div class="item">
             <a href='/imobil/view/<?php echo $item->idi; ?>' class='link_imobil'>
+                <img class="imobil_avatar" src="<?php echo $config['domain'].(!empty($item->avatar) ? '/media/images/imobil_pictures/'.$item->idi.'/avatar/'.$item->avatar : 
+                    "/media/images/imobil_default.jpg");?>">
                 <span class="tip_imobil"><?php echo $item->tip_imobil; ?></span>
                 <span class="pret"><?php echo $item->pret; ?></span>
                 <span class="cartier"><?php echo $item->cartier; ?></span>
@@ -36,6 +40,8 @@
         <?php foreach($top_imobile_teren_lastday as $item){?>
         <div class="item">
             <a href='/imobil/view/<?php echo $item->idi; ?>' class='link_imobil'>
+                <img class="imobil_avatar" src="<?php echo $config['domain'].(!empty($item->avatar) ? '/media/images/imobil_pictures/'.$item->idi.'/avatar/'.$item->avatar : 
+                    "/media/images/imobil_default.jpg");?>">
                 <span class="tip_imobil"><?php echo $item->tip_imobil; ?></span>
                 <span class="pret"><?php echo $item->pret; ?></span>
                 <span class="cartier"><?php echo $item->cartier; ?></span>
@@ -50,6 +56,8 @@
         <?php foreach($top_imobile_teren_lastmonth as $item){?>
         <div class="item">
             <a href='/imobil/view/<?php echo $item->idi; ?>' class='link_imobil'>
+                <img class="imobil_avatar" src="<?php echo $config['domain'].(!empty($item->avatar) ? '/media/images/imobil_pictures/'.$item->idi.'/avatar/'.$item->avatar : 
+                    "/media/images/imobil_default.jpg");?>">
                 <span class="tip_imobil"><?php echo $item->tip_imobil; ?></span>
                 <span class="pret"><?php echo $item->pret; ?></span>
                 <span class="cartier"><?php echo $item->cartier; ?></span>
