@@ -83,7 +83,7 @@ function fnOpenNormalDialog(location) {
 
 function callback(value,location) {
     if (value) {
-        addmark(location);
+        addmarker(location);
     } else {
         alert("Rejected");
     }
