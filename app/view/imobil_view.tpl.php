@@ -2,6 +2,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $config['domain']; ?>/media/css/imobil_view.css" />
 <script src="<?php echo $config['domain']; ?>/media/js/imobil_view.js"></script>
 <?php // echo '<pre>';var_dump($imobil);die; ?>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+<script src="<?php echo $config['domain']; ?>/media/js/map.js"></script>
 <script type="text/javascript">
 window.idi=<?php echo $imobil->idi;?></script>
 <div class="main">
@@ -58,9 +60,10 @@ window.idi=<?php echo $imobil->idi;?></script>
                              ' sc. '.$adresa['scara'].' et. '.$adresa['etaj'];
                     ?>
                     </p>
-                </div>
+                      
+                </div>    
             </div>
         </div>
 </div>
-
+  <div id="googleMap" style="width:500px;height:380px;"></div>
 <?php @include_once APP_PATH.'view/snippets/footer.tpl.php'; ?>

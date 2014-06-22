@@ -40,6 +40,8 @@ class controller_login {
                    $message="Te-ai inregistrat cu succes!";
                     $_SESSION['txtuser']= $user['nume_user'] ;
                     $_SESSION['txtpass']=$user['pass'];
+                    header("location: /index.php");
+                 
                }
              
             
