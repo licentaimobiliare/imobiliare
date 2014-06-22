@@ -1425,6 +1425,30 @@ class model_DateImobil{
         $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
        return $results;
    }
+   
+   public static function markersGetByIdImobil($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from markers                                
+                                        where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(id ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from markers where idi = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
 }
 
 
