@@ -67,11 +67,19 @@
           <h2 class="p3">Gaseste-ti un birou</h2>
           <img src="media/images/page1-img4.png" alt="">
           <div class="lists">
-              <?php  foreach(controller_helperImobil::getCartiere() as $cartier){ ?>
+              <?php $contor=0;$ok=true;  foreach(controller_helperImobil::getCartiere() as $cartier){ 
+                  if($contor == 0){ $ok=false;?>
             <ul class="list-1">
+                  <?php } ?>
               <li><a href="/cautare/index?cartier=<?php echo $cartier['cartier'];?>"><?php echo $cartier['cartier'];?></a></li>
+              <?php if($contor == 2){$contor=-1;$ok=true; ?>
             </ul>
-              <?php } ?>
+              <?php }
+              $contor++;
+              }
+              if(!$ok){?>
+          </ul>
+              <?php }?>
           </div>
         </div>
       </div>
