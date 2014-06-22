@@ -28,6 +28,7 @@ class controller_login {
                         {
                             $message="User sau parola introduse gresit";
                         }
+                        header("location: /");
                 }
 		
                 
