@@ -60,12 +60,12 @@
                     if (isset($user->nume_user) && $user->nume_user != "") {
                         echo 'Te-ai autentificat ca <b>' . $user->nume_user . '</b>';
                         ?>
-                        <form action="/index.php/logout/index" method="post" >
+                        <form action="/logout/index" method="post" >
                             <input type="submit" name="logout" size="8" value="Log-out"/>
                         </form>
                     
                     
-                    <form action="/index.php/admin/index" method="post" >
+                    <form action="/admin/index" method="post" >
                             <input type="submit" name="Administrator" size="8" value="Administrator"/>
                     </form>
                     
@@ -73,9 +73,9 @@
 } else {
     echo 'Nu esti autentificat.Te rog logheaza-te!';
     ?>
-                        <form action="/index.php/login/index" method="post" >
+                        <form action="/login/index" method="post" >
                             <input type="submit" name="signin" value="Log-in" size="8" />
-                            <form>
+                            </form>
                     <?php } ?>
                             </div>
                             <div id="slide">
@@ -99,9 +99,9 @@
                                     <li><a href="harta.php">Harta</a></li>
                                     <li><a href="/imobil/comerciale">Comerciale</a></li>
                                     <?php if (empty($user)){ ?>
-                                    <li><a href="/index.php/login/index">Acces</a></li>
+                                    <li><a href="/login/index">Acces</a></li>
                                     <?php } ?>
-                                    <li><a href="/index.php/reclamatii/index">Reclamatii</a></li>
+                                    <li><a href="/reclamatii/index">Reclamatii</a></li>
                                 </ul>
                             </nav>
                             </div>
