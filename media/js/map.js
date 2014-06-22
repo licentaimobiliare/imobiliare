@@ -9,7 +9,7 @@ function addmarker(location) {
         dataType: 'json',
         data: {
             nume: jQuery("#imobil_title").text(),
-            adresa: jQuery(".adresa>p:first-child").text(),
+            adresa: jQuery(".adresa>p:first").text(),
             lat: location.lat(),
             lng: location.lng(),
             tip: jQuery(".row:nth-child(3) p.first").clone()
