@@ -20,7 +20,7 @@ function addmarker(location) {
         },
         success: function(data) {
            alert("Salvat in baza de date!");
-            placeMarker(event.latLng);
+            placeMarker(location);
         },
         error: function() {
             console.log('error');
@@ -59,10 +59,10 @@ function placeMarker(location) {
 }
 
 function fnOpenNormalDialog(location) {
-    $("#dialog-confirm").html("Confirm Dialog Box");
+    jQuery("#dialog-confirm").html("Confirm Dialog Box");
 
     // Define the Dialog and its properties.
-    $("#dialog-confirm").dialog({
+    jQuery("#dialog-confirm").dialog({
         resizable: false,
         modal: true,
         title: "Modal",
