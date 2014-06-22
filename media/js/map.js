@@ -1,37 +1,90 @@
-var myCenter=new google.maps.LatLng(46.7667,23.6);
-var marker;
+jQuery(document).ready(function()
+{
+    google.maps.event.addDomListener(window, 'load', initialize);
+});
+function addmarker(location) {
+    jQuery.ajax({
+        type: "POST",
+        url: '/ajax/addmark/' + window.idi,
+        dataType: 'json',
+        data: {
+            nume: jQuery("#imobil_title").text(),
+            adresa: jQuery(".adresa>p:first-child").text(),
+            lat: location.lat(),
+            lng: location.lng(),
+            tip: jQuery(".row:nth-child(3) p.first").clone()
+            .children()
+            .remove()
+            .end()
+            .text(),            
+        },
+        success: function(data) {
+           alert("Salvat in baza de date!");
+            placeMarker(event.latLng);
+        },
+        error: function() {
+            console.log('error');
+        }
+    });
+}
+
+var map;
+var myCenter = new google.maps.LatLng(46.7667, 23.6);
 
 function initialize()
 {
-var mapProp = {
-  center:myCenter,
-  zoom:5,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
+    var mapProp = {
+        center: myCenter,
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-var marker=new google.maps.Marker({
-  position:myCenter,
- // animation:google.maps.Animation.BOUNCE,
-  title:'Click to zoom',
-  zoom:18,
-  mapTypeId:google.maps.MapTypeId.HYBRID
-  });
-
-marker.setMap(map);
-// Zoom to 9 when clicking on marker
-google.maps.event.addListener(marker,'click',function() {
-  map.setZoom(12);
-  map.setCenter(marker.getPosition());
-  });
-  var infowindow = new google.maps.InfoWindow({
-  content:"Hello World!"
-  });
-
-google.maps.event.addListener(marker, 'click', function() {
-  infowindow.open(map,marker);
-  });
-
+    google.maps.event.addListener(map, 'click', function(event) {
+//        placeMarker(event.latLng);
+ fnOpenNormalDialog(event.latLng);
+    });
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+
+function placeMarker(location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+    });
+    var infowindow = new google.maps.InfoWindow({
+        content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+    });
+    infowindow.open(map, marker);
+}
+
+function fnOpenNormalDialog(location) {
+    $("#dialog-confirm").html("Confirm Dialog Box");
+
+    // Define the Dialog and its properties.
+    $("#dialog-confirm").dialog({
+        resizable: false,
+        modal: true,
+        title: "Modal",
+        height: 250,
+        width: 400,
+        buttons: {
+            "Yes": function () {
+                jQuery(this).dialog('close');
+                callback(true,location);
+            },
+                "No": function () {
+                jQuery(this).dialog('close');
+                callback(false);
+            }
+        }
+    });
+}
+
+function callback(value,location) {
+    if (value) {
+        addmark(location);
+    } else {
+        alert("Rejected");
+    }
+}

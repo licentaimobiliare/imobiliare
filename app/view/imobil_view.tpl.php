@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $config['domain']; ?>/media/css/imobil_view.css" />
 <script src="<?php echo $config['domain']; ?>/media/js/imobil_view.js"></script>
 <?php // echo '<pre>';var_dump($imobil);die; ?>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
 <script src="<?php echo $config['domain']; ?>/media/js/map.js"></script>
 <script type="text/javascript">
@@ -65,5 +66,5 @@ window.idi=<?php echo $imobil->idi;?></script>
             </div>
         </div>
 </div>
- 
+ <div id="dialog-confirm"></div>
 <?php @include_once APP_PATH.'view/snippets/footer.tpl.php'; ?>
