@@ -99,7 +99,7 @@
                                     <li><a href="/harta/index">Harta</a></li>
                                     <li><a href="/imobil/comerciale">Comerciale</a></li>
                                     <?php if (empty($user)){ ?>
-                                    <li><a href="/login/index">Acces</a></li>
+                                    <li><a href="/login/index#login">Acces</a></li>
                                     <?php } ?>
                                     <li><a href="/reclamatii/index">Reclamatii</a></li>
                                 </ul>

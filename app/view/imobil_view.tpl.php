@@ -2,8 +2,19 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $config['domain']; ?>/media/css/imobil_view.css" />
 <script src="<?php echo $config['domain']; ?>/media/js/imobil_view.js"></script>
 <?php // echo '<pre>';var_dump($imobil);die; ?>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+<script src="<?php echo $config['domain']; ?>/media/js/map.js"></script>
 <script type="text/javascript">
-window.idi=<?php echo $imobil->idi;?></script>
+window.idi=<?php echo $imobil->idi;?>;
+<?php if(!empty($imobil_marker)){ ?>
+    window.imobil_location={};
+    <?php foreach($imobil_marker as $key => $value ){ ?>
+        window.imobil_location.<?php echo "$key";?>=<?php echo "'$value'";?>;
+    <?php } ?>
+    
+<?php }?>
+</script>
 <div class="main">
         <div class="container_12">
             <div class="grid_8">
@@ -74,7 +85,7 @@ window.idi=<?php echo $imobil->idi;?></script>
                     <?php echo $imobil->descriere;?>
                 </div>
                 <hr />
-                <div>
+                <div class="adresa">
                     <h5>Adresa</h5>
                     <p>
                     <?php $adresa=$imobil->adresa;global $id_tip_imobile_apartament;
@@ -85,9 +96,10 @@ window.idi=<?php echo $imobil->idi;?></script>
                              ' sc. '.$adresa['scara'].' et. '.$adresa['etaj'];
                     ?>
                     </p>
-                </div>
+                       <div id="googleMap" style="width:300px;height:180px;"></div>
+                </div>    
             </div>
         </div>
 </div>
-
+ <div id="dialog-confirm"></div>
 <?php @include_once APP_PATH.'view/snippets/footer.tpl.php'; ?>
