@@ -251,7 +251,7 @@ class model_DateImobil{
      
         $connection= model_database::get_instance();
         
-         $stmt =$connection->prepare('insert into markers('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');        
+         $stmt =$connection->prepare('insert into markers('.implode(',', $keys).') values ('. str_pad('', count($values) * 2 - 1, '?,') . ')');
          try{
             $stmt->execute($values);
             return $connection->lastInsertId();
@@ -910,22 +910,36 @@ class model_DateImobil{
          return $object;
    }
    
-   public static function updatemarkers($a)
-   {         
-         $connection= model_database::get_instance();
-         $stmt =$connection->prepare("update markers set name=?,address=?,lat=?,lng=?,type=? where id=?");    
-         $stmt->execute(array($a['name'],$a['address'],$a['lat'],$a['lng'],$a['type'],$a['id']));
-         $object = new stdClass();
-         $object->name = $a['name'] ;
-         $object->address = $a['address'] ;
-         $object->lat= $a['lat'] ;
-         $object->lng = $a['lng'] ;
-         $object->type = $a['type'] ;
-         $object->id = $a['id'] ;
-         return $object;
-   }
-   
-     public static function adaugastrada($strada){
+   public static function updatemarkers($a) {
+        $keys = array();
+        $values = array();
+        $query = "update markers set ";
+        foreach ($a as $key => $value) {
+            if ($key != 'id') {
+                $keys[] = $key;
+                $values[] = $value;
+                $query .= $key."=? ,";
+            }
+        }
+        $query=substr($query, 0, -1);
+        $query.="where id=? ";
+        $values[]=$a['id'];
+        
+        $connection = model_database::get_instance();
+        $stmt = $connection->prepare($query);
+        $stmt->execute($values);
+        $object = new stdClass();
+        $object->name = $a['name'];
+        $object->address = $a['address'];
+        $object->lat = $a['lat'];
+        $object->lng = $a['lng'];
+        $object->type = $a['type'];
+        $object->id = $a['id'];
+        $object->idi = $a['idi'];
+        return $object;
+    }
+
+    public static function adaugastrada($strada){
     $keys=array();$values=array();
         foreach($strada as $key => $value){
                 $keys[]=$key;
@@ -1425,6 +1439,30 @@ class model_DateImobil{
         $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
        return $results;
    }
+   
+   public static function markersGetByIdImobil($id)
+    {    
+    $connection= model_database::get_instance();
+        if(is_array($id))
+        {
+             $stmt = $connection->prepare('select * from markers                                
+                                        where idi in (' . str_pad('', count($id) * 2 - 1, '?,') . ')'
+                . 'order by FIELD(id ,'.str_pad('', count($id) * 2 - 1, '?,').')');                      
+             $orderid= array_merge_recursive($id,$id);
+             //var_dump($orderid);
+            $stmt ->execute($orderid);
+            $results = $stmt -> fetchAll(PDO::FETCH_OBJ);
+            
+        }
+        else
+        {      
+        $stmt = $connection -> prepare('Select * from markers where idi = ?');
+        $stmt-> execute(array($id));
+        $results = $stmt ->fetchObject();
+        }
+        return $results;
+   }
+   
 }
 
 

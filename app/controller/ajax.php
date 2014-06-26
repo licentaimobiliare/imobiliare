@@ -98,4 +98,22 @@ class controller_ajax{
         $result = model_imobil::getPicutre($params[0]);
         echo json_encode($result);
     }
+    
+    public function action_addmark($params){
+        $marker=array(
+          'idi'=> $params[0],
+          'name' => $_POST['nume'],
+          'address' => $_POST['adresa'],
+          'lat' =>$_POST['lat'],
+          'lng' => $_POST['lng'],
+          'type' => $_POST['tip']
+        );
+        $exist_marker=model_DateImobil::markersGetByIdImobil($params[0]);
+        if(empty($exist_marker))
+            echo json_encode(model_DateImobil::adaugamarkers($marker));
+        else {
+            $marker['id'] = $_POST['id'];
+            json_encode (model_DateImobil::updatemarkers ($marker));
+        }
+    }
 }

@@ -18,9 +18,10 @@ class controller_test {
 //                        print_r(model_DateImobil :: StraziGetById(array(1,2)));die;
 //            print_r(model_DateImobil :: StraziListName('a'));die;
          print_r(model_DateImobil :: updatetl($exemplu));die;
+
 //            print_r(model_DateImobil :: proprietariListName('2'));die;
-//            print_r(model_DateImobil :: deletefinisaj(100));die;
-            print_r(model_DateImobil:: updateRelCodStradaNumarImobil($exemplu));die;
+              print_r(model_DateImobil :: markersGetByIdImobil(31));die;
+              print_r(model_DateImobil:: updateRelCodStradaNumarImobil($exemplu));die;
 		$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
 		echo json_encode($arr);
 		//@include_once APP_PATH . 'view/home_index.tpl.php';	

@@ -102,6 +102,8 @@ class controller_imobil {
         foreach($items as $item){
             $change_items[]=$params[0].'/'.$item->image;
         }
+        
+        $imobil_marker=  model_DateImobil::markersGetByIdImobil($imobil->idi);
 
         if (!empty($_GET['message']) && $_GET['message'] == 1 )
         {
@@ -140,7 +142,6 @@ class controller_imobil {
             }
         }
         
-
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     
