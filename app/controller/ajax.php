@@ -106,7 +106,12 @@ class controller_ajax{
           'lng' => $_POST['lng'],
           'type' => $_POST['tip']
         );
-        
-        echo json_encode(model_DateImobil::adaugamarkers($marker));
+        $exist_marker=model_DateImobil::markersGetByIdImobil($params[0]);
+        if(empty($exist_marker))
+            echo json_encode(model_DateImobil::adaugamarkers($marker));
+        else {
+            $marker['id'] = $_POST['id'];
+            json_encode (model_DateImobil::updatemarkers ($marker));
+        }
     }
 }

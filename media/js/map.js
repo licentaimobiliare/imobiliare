@@ -3,11 +3,7 @@ jQuery(document).ready(function()
     google.maps.event.addDomListener(window, 'load', initialize);
 });
 function addmarker(location) {
-    jQuery.ajax({
-        type: "POST",
-        url: '/ajax/addmark/' + window.idi,
-        dataType: 'json',
-        data: {
+    var data={
             nume: jQuery("#imobil_title").text(),
             adresa: jQuery(".adresa>p:first").text(),
             lat: location.lat(),
@@ -16,10 +12,18 @@ function addmarker(location) {
             .children()
             .remove()
             .end()
-            .text(),            
-        },
+            .text(),   
+        }
+        if(window.imobil_location != undefined)
+            data['id'] = window.imobil_location.id;
+    jQuery.ajax({
+        type: "POST",
+        url: '/ajax/addmark/' + window.idi,
+        dataType: 'json',
+        data: data,
         success: function(data) {
            alert("Salvat in baza de date!");
+           marker.setMap(null);
             placeMarker(location);
         },
         error: function() {
@@ -30,6 +34,7 @@ function addmarker(location) {
 
 var map;
 var myCenter = new google.maps.LatLng(46.7667, 23.6);
+var marker;
 
 function initialize()
 {
@@ -40,20 +45,25 @@ function initialize()
     };
 
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
+    
+    if(window.imobil_location != undefined){
+        var latlng=new google.maps.LatLng(window.imobil_location.lat, window.imobil_location.lng);
+        placeMarker(latlng,window.imobil_location.name);
+    }
+        
     google.maps.event.addListener(map, 'click', function(event) {
 //        placeMarker(event.latLng);
  fnOpenNormalDialog(event.latLng);
     });
 }
 
-function placeMarker(location) {
-    var marker = new google.maps.Marker({
+function placeMarker(location,info) {
+    marker = new google.maps.Marker({
         position: location,
         map: map,
     });
     var infowindow = new google.maps.InfoWindow({
-        content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+        content: (info == undefined ? 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() : info)
     });
     infowindow.open(map, marker);
 }

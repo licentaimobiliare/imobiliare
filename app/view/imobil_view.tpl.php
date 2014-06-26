@@ -6,7 +6,15 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
 <script src="<?php echo $config['domain']; ?>/media/js/map.js"></script>
 <script type="text/javascript">
-window.idi=<?php echo $imobil->idi;?></script>
+window.idi=<?php echo $imobil->idi;?>;
+<?php if(!empty($imobil_marker)){ ?>
+    window.imobil_location={};
+    <?php foreach($imobil_marker as $key => $value ){ ?>
+        window.imobil_location.<?php echo "$key";?>=<?php echo "'$value'";?>;
+    <?php } ?>
+    
+<?php }?>
+</script>
 <div class="main">
         <div class="container_12">
             <div class="grid_8">

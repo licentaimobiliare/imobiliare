@@ -88,6 +88,9 @@ class controller_imobil {
         foreach($items as $item){
             $change_items[]=$params[0].'/'.$item->image;
         }
+        
+        $imobil_marker=  model_DateImobil::markersGetByIdImobil($imobil->idi);
+//        var_dump($imobil_marker);die;
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     
