@@ -151,7 +151,12 @@ class model_imobil{
                                         inner join finisaje as f on i.idf=f.idf
                                         inner join tip_locuinte as tl on i.idtl=tl.idtl
                                         inner join tip_constructii as tc on i.idt_constructie=tc.idtc
-                                        inner join tip_imobil as ti on i.idti = ti.idti limit '.
+                                        inner join tip_imobil as ti on i.idti = ti.idti limit 
+                                        left join tranzactii as tr on i.idi = tr.idi
+                                        where tr.cnp is null or 
+                                        (tr.cnp is not null and  
+                                        DATE_FORMAT(tr.data_final_vanzare,\'%Y%m%d\')<DATE_FORMAT(now(),\'%Y%m%d\'))
+                                        group by i.idi'.
                 //daca avem pagina luam de la pagna respeciva
                 (isset($_GET['page']) ? $_GET['page']*DEFAULT_PAGER : 0) . ',' . (isset($_GET['page']) ? $_GET['page']*DEFAULT_PAGER + DEFAULT_PAGER : DEFAULT_PAGER));
 
@@ -292,5 +297,111 @@ class model_imobil{
         $stmt->execute($values);
         return true;
     }
+    
+    public static function track($idtrack,$idi,$idu = null){
+        $connection = model_database::get_instance();
+        
+        $stmt= $connection->prepare("insert into imobil_track(idtt,idi"
+            . ($idu != null ? ",idu" : "") .") values(?,?"
+            . ($idu != null ? ",?" : "") .")");
+        
+        try{
+            $params=array($idtrack,$idi);
+            if($idu != null)$params[]=$idu;
+            $stmt->execute($params);
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+    
+    public static function ip_track($ip,$idi){
+        $connection = model_database::get_instance();
+        
+        $stmt= $connection->prepare("insert into ip_track(ip,expiration,idi) values(?,?,?)");
+        
+        try{
+            $next_day=date('Y-m-d h:i:s',strtotime(' +1 day'));
+            $stmt->execute(array($ip,$next_day,$idi));
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }       
+    }
+    
+    public static function ip_remove_track($ip,$idi){
+       $connection = model_database::get_instance();
+        
+        $stmt= $connection->prepare("delete from ip_track where ip = ? and idi = ?");
+        
+        try{
+            $stmt->execute(array($ip,$idi));
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }        
+    }
+    
+    public static function getIpTracked($ip,$idi){
+       $connection = model_database::get_instance();
+        
+        $stmt= $connection->prepare("select * from ip_track where ip =? and idi=?");
+        
+        try{
+            $stmt->execute(array($ip,$idi));
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $ex) {
+            return false;
+        }        
+    }
+    
+    public static function getTrack($filter=null){
+        $connection= model_database::get_instance();
+        
+        $query="select * from imobil_track where "
+            . (!empty($filter['date']) ? "DATE(visite_date)"
+                . (!empty($filter['low_date']) ? "<=" : 
+                    (!empty($filter['equal_date']) ? "=" : ">="))
+                . "DATE('".$filter['date']."') and " : "" )
+            .(!empty($filter['idi']) && is_numeric($filter['idi']) ? "idi=".$filter['idi']." and " : "")
+            .(!empty($filter['idtt']) && is_numeric($filter['idtt']) ? "idtt=".$filter['idtt']." and " : "")
+            .(!empty($filter['idu']) && is_numeric($filter['idu'] ? "idu=".$filter['idu'] : ""))
+            ." idi is not null "
+            .(is_array($filter['limit']) ? "limit ".$filter['limit']['start'].",".$filter['limit']['stop']." " : "");
+            
+        $stmt=$connection->prepare($query);
+        
+        try{
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+    
+    public static function getImobilTracks($filter){
+        $connection = model_database::get_instance();
+        
+        $query="select idi,count(idi) as number from imobil_track where "
+            .(!empty($filter['idtt']) && is_numeric($filter['idtt']) ? "idtt=".$filter['idtt']." and " : "")
+            .(!empty($filter['date']) ? "DATE(visit_date)"
+                . (!empty($filter['low_date']) ? "<=" : 
+                    (!empty($filter['equal_date']) ? "=" : ">="))
+                . "DATE('".$filter['date']."') and " : "" )
+            .(!empty($filter['idi']) && is_numeric($filter['idi']) ? "idi=".$filter['idi']." and " : "" )
+            .(!empty($filter['idu']) && is_numeric($filter['idu']) ? "idu=".$filter['idu']." " : "")
+            ." idi is not null group by idi order by number desc "
+            .(is_array($filter['limit']) ? "limit ".$filter['limit']['start'].",".$filter['limit']['stop']." " : "");
+        
+        $stmt= $connection->prepare($query);
+        
+        try{
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+    
 }
 

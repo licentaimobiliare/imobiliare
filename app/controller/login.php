@@ -5,6 +5,10 @@
 class controller_login {
 
 	function action_index($params) {
+        global $user;
+        if(!empty($user)){
+            echo "GO TO USER PROFILE";die;
+        }
            if ($_POST['type'] == 1)
                 {
                     $sec = controller_helper::login();
@@ -12,7 +16,7 @@ class controller_login {
                     {
                         //$_SESSION['txtuser']=$_POST['txtuser'];
                         //$_SESSION['txtpass']=$_POST['txtpass'];
-                        global $user;
+                        
                         $_SESSION['user']=$user;
                     }
                     else
@@ -24,6 +28,7 @@ class controller_login {
                         {
                             $message="User sau parola introduse gresit";
                         }
+                        header("location: /");
                 }
 		
                 

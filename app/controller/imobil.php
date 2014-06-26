@@ -30,6 +30,15 @@ class controller_imobil {
                                         'tip_camera' => $_POST['imobil']['date']['tip_camera'][$i]);
                 }
                 
+                if($_FILES['imobil']['tmp_name'] != ''){
+                    $avatar='avatar_'.date().'_'.uniqid().'.jpg';
+                    $file=$_FILES['imobil']['tmp_name']['date']['avatar'];
+                }
+                else {
+                    $avatar='imobil_default.jpg';
+                    $file=dirname(APP_PATH).'/media/images/'.$avatar;
+                }
+                
                 $imobil= array(
                     'idf' => $finisaj -> idf,
                     'idt_constructie' =>$tip_constructie -> idtc,
@@ -40,6 +49,7 @@ class controller_imobil {
                     'mp' => $_POST['imobil']['date']['mp'],
                     'descriere' => $_POST['imobil']['date']['descriere'],
                     'data_constructie' => $_POST['imobil']['date']['data_constructie'],
+                    'avatar' => $avatar,
                     'adresa' => array(
                         'idcp' => $cod_postal->idcp,
                         'ids' => $nume_strada->ids,
@@ -57,8 +67,12 @@ class controller_imobil {
                 
                 $idi = model_imobil::addImobil($imobil);
                 
-                $imobil = model_imobil::getById($idi);
-                header('Location: '.$config['domain'].'/imobil/view/'.$imobil->idi);
+                if(!file_exists(dirname(APP_PATH).'/media/images/imobil_pictures/'.$idi.'/avatar'))
+                    mkdir(dirname(APP_PATH).'/media/images/imobil_pictures/'.$idi.'/avatar',0777,true);
+                move_uploaded_file($file, dirname(APP_PATH).'/media/images/imobil_pictures/'.$idi.'/avatar/'.$avatar);
+                    
+//                $imobil = model_imobil::getById($idi);
+                header('Location: '.$config['domain'].'/imobil/view/'.$idi);
             }
             else $message = "Validati toate campurile!";
         }
@@ -90,7 +104,44 @@ class controller_imobil {
         }
         
         $imobil_marker=  model_DateImobil::markersGetByIdImobil($imobil->idi);
-//        var_dump($imobil_marker);die;
+
+        if (!empty($_GET['message']) && $_GET['message'] == 1 )
+        {
+            $message_tranzactie =array("message"=>"Tranzactie reusita!",
+                                       "succes"=>1,
+                                       );
+        }
+        else if ($_GET['message'] === '0')
+        {
+            $message_tranzactie = array("message"=>"Tranzactie esuata!",
+                                        "succes"=>0,
+                                        );
+        }
+        
+        global $user;
+        
+        if(!empty($_POST['track']))
+            controller_helper::track_user ($user, $params[0], TEREN_TRACK);
+        
+        //track this imobil
+        $user_ip=  controller_helper::getClientIP();
+        $track_ip = model_imobil::getIpTracked($user_ip,$params[0]);
+        if (empty($track_ip)) {
+            
+            controller_helper::track_user($user, $params[0],SITE_TRACK);
+            model_imobil::ip_track($user_ip,$params[0]);
+        }
+        else{
+            $format = "Y-m-d h:m:s";
+            $date1  = new DateTime($track_ip->expiration);
+            $date2  = new DateTime();
+            if($date2>=$date1){
+                model_imobil::ip_remove_track($user_ip,$params[0]);
+                controller_helper::track_user($user, $params[0], SITE_TRACK);
+                model_imobil::ip_track($user_ip,$params[0]);
+            }
+        }
+        
         @include APP_PATH.'view/imobil_view.tpl.php';
     }
     
@@ -119,8 +170,9 @@ class controller_imobil {
             if(!empty($_POST['tranzactie']['data_final_tranzactie']))
                 $tranzactie['data_final_vanzare']=$_POST['tranzactie']['data_final_tranzactie'];
             
-            model_DateImobil::adaugatranzactii($tranzactie);
-            header('Location: '.$config['domain'].'/imobil/view/'.$params[0]);
+            $rezultat = model_DateImobil::adaugatranzactii($tranzactie);
+            header('Location: '.$config['domain'].'/imobil/view/'.$params[0].'?message='.$rezultat);
+            
         }
         
         $servicii = model_DateImobil::serviciiListName("%");
@@ -148,5 +200,40 @@ class controller_imobil {
         return true;
     }
     
+    private function getTrackImobile($filter){
+        
+        $idi = model_imobil::getImobilTracks($filter);
+        $idis=array();
+        foreach($idi as $id){
+            $idis[] = $id -> idi;
+        }
+        $imobile = model_imobil::getById($idis);
+        
+        return $imobile;
+    }
+    
+    public function action_comerciale($params){
+        
+        $filter = array(
+            'idtt' => SITE_TRACK,
+            'date' => date('Y-m-d h:i:s',strtotime(' -1 day')),
+            'limit' => array(
+                'start' => 0,
+                'stop' =>5,
+            ),
+        ); 
+        $top_imobile_site_lastday = $this->getTrackImobile($filter);
+        
+        $filter['date'] = date('Y-m-d h:i:s',strtotime(' -1 month'));
+        $top_imobile_site_lastmonth = $this->getTrackImobile($filter);
+        
+        $filter['idtt'] = TEREN_TRACK;
+        $top_imobile_teren_lastmonth = $this->getTrackImobile($filter);
+        
+        $filter['date'] = date('Y-m-d h:i:s',strtotime(' -1 day'));
+        $top_imobile_teren_lastday = $this->getTrackImobile($filter);
+        
+        @include APP_PATH.'view/imobil_comerciale.tpl.php';
+    }
 
 }

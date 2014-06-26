@@ -323,7 +323,7 @@ class model_DateImobil{
         }
         else
         {     
-        $stmt = $connection -> prepare('Select * from tip_imobil where idtl = ?');
+        $stmt = $connection -> prepare('Select * from tip_imobil where idti = ?');
         $stmt-> execute(array($id));
         $results = $stmt ->fetchObject();
         }

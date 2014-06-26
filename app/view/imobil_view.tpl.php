@@ -18,6 +18,7 @@ window.idi=<?php echo $imobil->idi;?>;
 <div class="main">
         <div class="container_12">
             <div class="grid_8">
+                <?php echo (!empty($message_tranzactie) ? '<p class="'.($message_tranzactie['succes']==1 ? "success" : "error").'">'.$message_tranzactie['message'].'</p>' : "") ?>
                 <h4 id="imobil_title"><?php echo $imobil->tip_imobil;?></h4>
                 <div class="row">
                     <p class="first"><span>Metri Patrati: </span> <?php echo $imobil->mp;?></p>
@@ -35,15 +36,41 @@ window.idi=<?php echo $imobil->idi;?>;
                     <p class="first"><span>Finisaj: </span><?php echo $imobil->finisaj;?></p>
                     <p><span>Data inregistrarii: </span><?php echo $imobil->data_inregistrare;?></p>
                 </div>
-                <?php global $user;
+                <?php 
                 if (in_array($user->tip,array('administrator','angajat'))) {
                     ?>
+                <div class="proprietar">
+                        <h3>Proprietar</h3>
+                        <div class="row">
+                            <p class="first"><span>CNP:</span> <?php echo $imobil->idp; ?></p>
+                            <p><span>Nume: </span><?php echo $imobil->proprietar['nume']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Strada: </span><?php echo $imobil->proprietar['strada']; ?></p>
+                            <p><span>Nr: </span><?php echo $imobil->proprietar['nr']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Bl: </span><?php echo $imobil->proprietar['bl']; ?></p>
+                            <p><span>Ap: </span><?php echo $imobil->proprietar['ap']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Sc: </span><?php echo $imobil->proprietar['sc']; ?></p>
+                            <p><span>Et: </span><?php echo $imobil->proprietar['et']; ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="first"><span>Oras: </span><?php echo $imobil->proprietar['oras']; ?></p>
+                            <p><span>Judet: </span><?php echo $imobil->proprietar['judet']; ?></p>
+                        </div>
+                    </div>
                 <form method="POST" action="" enctype="multipart/form-data">
                     Poze imobil:<input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
                     <button>Adauga</button>
                 </form>
                 <button onclick="window.location.href=window.location.origin+'/imobil/tranzactie/<?php echo $imobil->idi ?>'">
                     Tranzactie</button>
+                <form method="POST" action="">
+                    <button name="track" value="track">Track</button>
+                </form>
                 <?php } ?>
             </div>
             <div class="grid_4">
