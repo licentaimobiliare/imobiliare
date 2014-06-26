@@ -96,7 +96,7 @@
                                 <ul class="menu">
                                     <li><a href="/">Acasa</a></li>
                                     <li><a href="/cautare/index">Cautare</a></li>
-                                    <li><a href="harta.php">Harta</a></li>
+                                    <li><a href="/harta/index">Harta</a></li>
                                     <li><a href="/imobil/comerciale">Comerciale</a></li>
                                     <?php if (empty($user)){ ?>
                                     <li><a href="/login/index">Acces</a></li>
