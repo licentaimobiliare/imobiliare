@@ -1,5 +1,5 @@
 <?php @include APP_PATH . 'view/snippets/header.tpl.php'; ?>
-
+<span id="login"> &nbsp; </span>
 <div class="main">
     <section id="content">
         <div class="container_12">
