@@ -4,22 +4,26 @@
  <section id="content">
     <div class="container_12">
       <div class="grid_8">
+          <?php if(!empty($message_reclamatie)){ ?>
+          <p class="<?php echo ($message_reclamatie['cod']==0 ? "error" : "success");?>"><?php echo $message_reclamatie['text']; ?></p>
+          <?php } ?>
         <h2 class="top-1 p3">Formular de reclamatii:</h2>
-        <form id="form" method="post" action="#">
+        <form id="form" method="post" action="">
           <fieldset>
             <label><strong>Nume:</strong>
-              <input type="text" value="">
+              <input type="text" value="<?php echo (!empty($user) ? $user->nume_user : "");?>" name="name">
             </label>
 			 <label><strong>Telefon:</strong>
-              <input type="text" value="">
+                 <input type="text" value="<?php echo (!empty($user) ? $user->telefon : "");?>" name="telefon">
             </label>
             <label><strong>E-mail:</strong>
-              <input type="text" value="">
+              <input type="text" value="<?php echo (!empty($user) ? $user->email : "");?>" name="email">
             </label>
             <label><strong>Mesaj:</strong>
-              <textarea></textarea>
+                <textarea name="message"></textarea>
             </label>
-            <div class="btns"><a href="contact.php" class="button">Sterge</a><a href="#" class="button">Trimite</a></div>
+              <div class="btns"><a href="contact.php" class="button">Sterge</a><a onclick="document.getElementById('submit').click();" class="button">Trimite</a></div>
+              <button id="submit" name="Submit" value="submit" style="display: none;">Submit</button>
           </fieldset>
         </form>
       </div>
