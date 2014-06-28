@@ -1,0 +1,74 @@
+.detalii_imobil img{
+    min-height: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    max-height: 200px;
+}
+.link_imobil span{
+    display: block;
+}
+
+.link_imobil div{
+    display: inline-block;
+    color: #939393;
+    font-weight: 900;
+    line-height: 50px;
+}
+
+.detalii_proprietar {
+    text-align: center;
+    line-height: 50px;
+    border-right: 1px solid;
+    border-left: 1px solid;
+}
+
+.detalii_proprietar p{
+    display: block;
+}
+
+.detalii_proprietar p > span{
+    font-weight: 900;
+}
+
+.detalii_vanzare{
+    line-height: 60px;
+    text-align: center;
+}
+
+.detalii_vanzare p > span{
+    font-weight: 900;
+}
+
+.table{
+    min-width: 100%;
+}
+
+.table .row{
+    display: block;
+    border: 1px solid;
+}
+
+.table .row .column{
+    display: inline-block;
+    width: 30%;
+    max-height: 200px;
+    min-height: 200px;
+}
+
+.clona{
+    display: none !important;
+}
+
+#cautare_avansata{
+    height: 0px;
+    overflow: hidden;
+}
+
+ul.ui-autocomplete.ui-menu{
+    width:168px !important;
+    background-color: white !important;
+}
+
+ul.ui-autocomplete.ui-menu li:hover{
+    color:blue;
+}
