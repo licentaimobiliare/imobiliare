@@ -13,15 +13,15 @@
           <div> <img src="<?php echo $config['domain'];?>/media/images/casa1.jpg" alt="" class="img-border">
             <h3>CASE</h3>
             <p>Pentru a putea vedea toate casele disponibile apasa pe buton de mai jos.</p>
-            <a href="case.php" class="button">Mai multe</a> </div>
+            <a href="/cautare/index?idti=casa" class="button">Mai multe</a> </div>
           <div> <img src="<?php echo $config['domain'];?>/media/images/apartamente1.jpg" alt="" class="img-border">
             <h3>APARTAMENTE</h3>
             <p>In aceasta sectiune se pot vizualiza toate apartamentele disponibile. Click pe butonul de mai jos pentru mai multe detalii.</p>
-            <a href="apartamente.php" class="button">Mai multe</a> </div>
+            <a href="/cautare/index?idti=ap decomandat" class="button">Mai multe</a> </div>
           <div class="last"> <img src="<?php echo $config['domain'];?>/media/images/comercial1.jpg" alt="" class="img-border">
             <h3>COMERCIALE</h3>
             <p>Pentru a vizualiza toate spatiile comerciale disponibile apasa pe butonul de mai jos.</p>
-            <a href="comerciale.php" class="button">Mai multe</a> </div>
+            <a href="/cautare/index?idti=spatiu comercial" class="button">Mai multe</a> </div>
         </div>
       </div>
    <div class="grid_4">
