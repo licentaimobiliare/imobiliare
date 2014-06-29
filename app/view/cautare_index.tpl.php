@@ -4,7 +4,7 @@
 <script src="<?php echo $config['domain']; ?>/media/js/cautare.js"></script>
 <div class="cautare">
     <?php global $user;
-    if($user->tip == 'administrator'){ ?>
+    if(in_array($user->tip, array("administrator","angajat"))){ ?>
     <a href="/imobil/adaugare">Adauga imobil</a>
     <?php } ?>
     <div>

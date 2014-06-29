@@ -73,7 +73,7 @@
 } else {
     echo 'Nu esti autentificat.Te rog logheaza-te!';
     ?>
-                        <form action="/login/index" method="post" >
+                        <form action="/login/index#login" method="post" >
                             <input type="submit" name="signin" value="Log-in" size="8" />
                             </form>
                     <?php } ?>

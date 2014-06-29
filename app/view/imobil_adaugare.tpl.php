@@ -22,7 +22,7 @@
     <input type="text" data-type="adresa" placeholder="Tip strada" name="imobil[adresa][tip_strada]" class="hidden"/>
     <input type="text" data-type="adresa" placeholder="Nume strada" name="imobil[adresa][nume_strada]" class="hidden"/>
     <input type="text" data-type="adresa" placeholder="Numar" name="imobil[adresa][numar]" class="hidden"/>
-    <input type="text" data-type="adresa" placeholder="Codu Postal" name="imobil[adresa][cod_postal]" class="hidden"/>
+    <input type="text" data-type="adresa" placeholder="Codul Postal" name="imobil[adresa][cod_postal]" class="hidden"/>
     
     <!--Inputuri pentru adaugarea imobilului-->
     <input type="text" data-type="date" placeholder="Pret" name="imobil[date][pret]" class="hidden"/>

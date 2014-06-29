@@ -49,7 +49,6 @@
             onmouseover="mcancelclosetime()"
             onmouseout="mclosetime()">
           <a href="#">Adauga utilizator</a>     
-          <a href="#">Sterge utilizator</a>
           <a href="#">Editeaza utilizator</a>
         </div>
     </li>
@@ -59,7 +58,7 @@
         <div id="m4"
             onmouseover="mcancelclosetime()"
             onmouseout="mclosetime()">
-          <a href="#">Vizualizare history</a>     
+          <a href="/imobil/history">Vizualizare history</a>     
           
         </div></li>
     
