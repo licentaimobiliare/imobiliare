@@ -1,22 +1,25 @@
-jQuery(document).ready(function (){
-   jQuery('#submit').off('click').on('click',function () {
-      if(jQuery('.imobil_form input[data-type="date"]:lt(1)').hasClass('hidden')){
-          var type=jQuery('.imobil_form input:not(.hidden):lt(1)').data('type');
-          switch(type){
-              case 'proprietar':
-                  jQuery('#imobil_back').removeClass('hidden');
-                  jQuery('.imobil_form input[data-type="proprietar"]').addClass('hidden');
-                  jQuery('.imobil_form input[data-type="adresa"]').removeClass('hidden');
-                  break;
-              case 'adresa':
-                  jQuery('.imobil_form input[data-type="adresa"]').addClass('hidden');
-                  jQuery('.imobil_form input[data-type="date"]').removeClass('hidden');
-                  jQuery('#adauga_camera').removeClass('hidden');
-                  break;
-          }
-          return false;
-      }
-   });
+jQuery(document).ready(function() {
+    jQuery('#submit').off('click').on('click', function() {
+        if (jQuery('.imobil_form input[data-type="date"]:lt(1)').hasClass('hidden')) {
+            var type = jQuery('.imobil_form input:not(.hidden):lt(1)').data('type');
+            if (jQuery('input[data-type="' + type + '"]').val().trim(" ") != "") {
+                switch (type) {
+                    case 'proprietar':
+                        jQuery('#imobil_back').removeClass('hidden');
+                        jQuery('.imobil_form input[data-type="proprietar"]').addClass('hidden');
+                        jQuery('.imobil_form input[data-type="adresa"]').removeClass('hidden');
+                        break;
+                    case 'adresa':
+                        jQuery('.imobil_form input[data-type="adresa"]').addClass('hidden');
+                        jQuery('.imobil_form input[data-type="date"]').removeClass('hidden');
+                        jQuery('#adauga_camera').removeClass('hidden');
+                        break;
+                }
+            }
+            else alert("Completati campurile corespunzator!");
+            return false;
+        }
+    });
    
     jQuery('#imobil_back').off('click').on('click', function() {
         var type = jQuery('.imobil_form input:not(.hidden):lt(1)').data('type');

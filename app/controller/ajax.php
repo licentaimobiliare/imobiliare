@@ -116,4 +116,41 @@ class controller_ajax{
             json_encode (model_DateImobil::updatemarkers ($marker));
         }
     }
+    
+    public function action_tranzactii($params){
+        $filter = $_POST;
+        $filter=  controller_ajax::rafineazaFiltrarea($filter);
+        
+        $connection = model_database::get_instance();
+        
+        $query = "select t.* from tranzactii as t "
+            . "inner join imobil as i on t.idi = i.idi "
+            . "where "
+            . (!empty($filter['idti']) && is_numeric($filter['idti']) ? "i.idti=".$filter['idti']." and " : "")
+            . (!empty($filter['idtl']) && is_numeric($filter['idtl']) ? "i.idtl=".$filter['idtl']." and " : "")
+            . (!empty($filter['idt_constructie']) && is_numeric($filter['idt_constructie']) ? "i.idt_constructie=".$filter['idt_constructie']." and " : "")
+            . (!empty($filter['idf']) && is_numeric($filter['idf']) ? "idf=".$filter['idf']." and " : "")
+            . (!empty($filter['idts']) && is_numeric($filter['idts']) ? "idts=".$filter['idts']." and " : "")
+            . (!empty($filter['ids']) && is_numeric($filter['ids']) ? "ids=".$filter['ids']." and " : "")
+            . (!empty($filter['cartier']) ? "i.cartier like '".$filter['cartier']."%' and " : "")
+            . (!empty($filter['idp']) ? "i.idp like '".$filter['idp']."' and " : "")
+            . "i.idi is not null limit ".($params[0]-1)*DEFAULT_PAGER.','.$params[0]*DEFAULT_PAGER;
+        
+        $stmt = $connection ->prepare($query);
+        $stmt->execute();
+        $results= $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        $tranzactii =array();
+        foreach ($results as $result){
+            $tranzactie = new stdClass();
+            $tranzactie->imobil = model_imobil::getById($result->idi);
+            $tranzactie->client = model_DateImobil::clientiGetById($result->cnp);
+            $tranzactie->serviciu = model_DateImobil::serviciiGetById($result->ids);
+            $tranzactie->data_vanzare = $result->data_vanzare;
+            $tranzactie->data_final_vanzare = $result ->data_final_vanzare;
+            $tranzactii[] = $tranzactie;
+        }
+        
+        echo json_encode($tranzactii);
+    }
 }

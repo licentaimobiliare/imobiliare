@@ -236,4 +236,8 @@ class controller_imobil {
         @include APP_PATH.'view/imobil_comerciale.tpl.php';
     }
 
+    public function action_history($params){
+        
+        @include APP_PATH.'view/imobil_tranzactiihistory.tpl.php';
+    }
 }

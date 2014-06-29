@@ -88,13 +88,15 @@ window.idi=<?php echo $imobil->idi;?>;
                 <div class="adresa">
                     <h5>Adresa</h5>
                     <p>
-                    <?php $adresa=$imobil->adresa;global $id_tip_imobile_apartament;
+                    <?php 
+                    if(in_array($user->tip,array('administrator','angajat'))){
+                        $adresa=$imobil->adresa;global $id_tip_imobile_apartament;
                         echo $adresa['tip_strada'].' '.$adresa['nume_strada'].
-                            ' nr. '.$adresa['numar'].' cod postal '.$adresa['cod_postal'];
-                         if(in_array($adresa->idti, $id_tip_imobile_apartament))
-                             echo ' blocu '.$adresa['numar_imobil'].' ap. '.$adresa['apartament'].
-                             ' sc. '.$adresa['scara'].' et. '.$adresa['etaj'];
-                    ?>
+                                ' nr. '.$adresa['numar'].' cod postal '.$adresa['cod_postal'];
+                        if(in_array($adresa->idti, $id_tip_imobile_apartament))
+                           echo ' blocu '.$adresa['numar_imobil'].' ap. '.$adresa['apartament'].
+                                ' sc. '.$adresa['scara'].' et. '.$adresa['etaj'];
+                    } ?>
                     </p>
                        <div id="googleMap" style="width:300px;height:180px;"></div>
                 </div>    
