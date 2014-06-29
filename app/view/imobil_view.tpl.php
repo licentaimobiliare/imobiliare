@@ -10,7 +10,7 @@ window.idi=<?php echo $imobil->idi;?>;
 <?php if(!empty($imobil_marker)){ ?>
     window.imobil_location={};
     <?php foreach($imobil_marker as $key => $value ){ ?>
-        window.imobil_location.<?php echo "$key";?>=<?php echo "'$value'";?>;
+        window.imobil_location.<?php echo "$key";?>='<?php echo ($key == 'address' ? urlencode($value) : $value);?>';
     <?php } ?>
     
 <?php }?>

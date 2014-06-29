@@ -23,7 +23,7 @@ function addmarker(location) {
         data: data,
         success: function(data) {
            alert("Salvat in baza de date!");
-           marker.setMap(null);
+           if(marker != undefined)marker.setMap(null);
             placeMarker(location);
         },
         error: function() {
