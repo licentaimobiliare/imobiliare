@@ -100,6 +100,11 @@ class controller_ajax{
     }
     
     public function action_addmark($params){
+        
+        global $user;
+        if(!in_array($user->tip, array('administrator','angajat'))){
+            echo json_encode (array("error"=>"Acces interzis !"));die;
+        }
         $marker=array(
           'idi'=> $params[0],
           'name' => $_POST['nume'],

@@ -22,6 +22,8 @@ function addmarker(location) {
         dataType: 'json',
         data: data,
         success: function(data) {
+            if(data['error'] != undefined)
+                return;
            alert("Salvat in baza de date!");
            if(marker != undefined)marker.setMap(null);
             placeMarker(location);
