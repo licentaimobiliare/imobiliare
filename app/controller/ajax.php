@@ -158,4 +158,17 @@ class controller_ajax{
         
         echo json_encode($tranzactii);
     }
+    
+    public function action_user($params){
+        $connection =  model_database::get_instance();
+        
+        $stmt= $connection->prepare("update users set tip=? where iduser=?");
+        
+        try{
+            $stmt->execute(array($_POST['tip'],$params[0]));
+            echo json_encode(array("success"=>true));
+        } catch (Exception $ex) {
+            echo json_encode(array("success"=>false,"message"=>$ex->getMessage()));
+        }
+    }
 }
